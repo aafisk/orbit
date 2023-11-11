@@ -127,7 +127,7 @@ private:
 	void calculateHeightAboveSurface_OnSurface()
 	{
 		PhysicsManager physics;
-		StubPositionOnSurface position = StubPosition(6378000.0, 0.0);
+		StubPositionOnSurface position = StubPositionOnSurface(6378000.0, 0.0);
 		double height = 500.0;
 
 		// Exercise
