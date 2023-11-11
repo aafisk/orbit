@@ -162,6 +162,7 @@
     <ClInclude Include="test.h" />
     <ClInclude Include="testPhysicsManager.h" />
     <ClInclude Include="testPosition.h" />
+    <ClInclude Include="testSputnik.h" />
     <ClInclude Include="uiDraw.h" />
     <ClInclude Include="uiInteract.h" />
     <ClInclude Include="velocity.h" />

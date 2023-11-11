@@ -3,12 +3,12 @@
 class Sputnik
 {
 public:
-	double applyPhysics(double iP, double iV, double a)
+	double applyPhysics(Position iP, Velocity iV, Acceleration acceleration)
 	{
 		PhysicsManager physics;
-		double v = physics.calculateVelocity(iV, a);
-		double pos = physics.calculateDistance(iP, v, a);
-		return v, pos;
+		Velocity velocity = physics.calculateVelocity(iV, acceleration);
+		Position pos = physics.calculateDistance(iP, velocity, acceleration);
+		return velocity, pos;
 	}
 
 	bool setToDead(bool isAlive)
@@ -17,3 +17,31 @@ public:
 	}
 };
 
+
+/******************
+* STUBS
+****************/
+class VelocityStubNotMoving : Velocity
+{
+	double getVelocity()		const { return 0.00; }
+};
+
+class VelocityStubMoving : Velocity
+{
+	double getVelocity()		const { return 5.00; }
+};
+
+class PositionStub : Position
+{
+	double getPosition()		const { return 0.00; }
+};
+
+class AccelerationStubNotMoving : Acceleration
+{
+	double getAcceleration()		const { return 0.00; }
+};
+
+class AccelerationStubMoving : Acceleration
+{
+	double getAcceleration()		const { return 5.00; }
+};
