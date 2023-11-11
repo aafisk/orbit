@@ -20,30 +20,22 @@ public:
 		void testAboutDead();
 	}
 
-	// setup
-
-	// exercise
-
-	// verify
-
-	// teardown
-
 private:
 	void testNotMovingNoAccelleration()
 	{
 		// setup
 		Sputnik sputnik;
-		double p = 0.00;
-		double v = 0.00;
-		double a = 0.00;
+		PositionStub position;
+		VelocityStub velocity;
+		AccelerationStub acceleration;
 
 		// exercise
-		sputnik.applyPhysics(p, v, a);
+		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(p == 0.00);
-		assert(v == 0.00);
-		assert(a == 0.00);
+		assert(position == 0.00);
+		assert(velocity == 0.00);
+		assert(acceleration == 0.00);
 		// teardown
 	}
 
@@ -51,17 +43,17 @@ private:
 	{
 		// setup
 		Sputnik sputnik;
-		double p = 0.00;
-		double v = 0.00;
-		double a = 5.00;
+		PositionStub position;
+		VelocityStub velocity;
+		AccelerationStub acceleration;
 
 		// exercise
-		sputnik.applyPhysics(p, v, a);
+		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(p == 4608.00);
-		assert(v == 240);
-		assert(a == 5.00);
+		assert(position == 4608.00);
+		assert(velocity == 240);
+		assert(acceleration == 5.00);
 
 		// teardown
 	}
@@ -70,17 +62,17 @@ private:
 	{
 		// setup
 		Sputnik sputnik;
-		double p = 0.00;
-		double v = 5.00;
-		double a = 5.00;
+		PositionStub position;
+		VelocityStub velocity;
+		AccelerationStub acceleration;
 
 		// exercise
-		sputnik.applyPhysics(p, v, a);
+		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(p == 4848.00);
-		assert(v == 245.00);
-		assert(a == 5.00);
+		assert(position == 4848.00);
+		assert(velocity == 245.00);
+		assert(acceleration == 5.00);
 		// teardown
 
 	}
@@ -89,17 +81,17 @@ private:
 	{
 		// setup
 		Sputnik sputnik;
-		double p = 0.00;
-		double v = 5.00;
-		double a = 0.00;
+		PositionStub position;
+		VelocityStub velocity;
+		AccelerationStub acceleration;
 
 		// exercise
-		sputnik.applyPhysics(p, v, a);
+		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(p == 240.00);
-		assert(v == 5.00);
-		assert(a == 0.00);
+		assert(position == 240.00);
+		assert(velocity == 5.00);
+		assert(acceleration == 0.00);
 		// teardown
 	}
 
