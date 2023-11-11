@@ -38,10 +38,12 @@ private:
 		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(sputnikPosition.getMetersX() == 0.00);
-		assert(sputnikPosition.getMetersY() == 0.00);
-		assert(sputnikVelocity.getVelocity == 0.00);
-		assert(sputnikAcceleration.getAcceleration == 0.00);
+		assert(sputnikPosition.getMetersX() == 0.0);
+		assert(sputnikPosition.getMetersY() == 0.0);
+		assert(sputnikVelocity.getVelocityDX() == 0.0);
+		assert(sputnikVelocity.getVelocityDY() == 0.0);
+		assert(sputnikAcceleration.getAccelerationDDX == 0.0);
+		assert(sputnikAcceleration.getAccelerationDDY == 0.0);
 		// teardown
 	}
 
@@ -59,8 +61,10 @@ private:
 		// verify
 		assert(sputnikPosition.getMetersX() == 4608.00);
 		assert(sputnikPosition.getMetersY() == 4608.00);
-		assert(sputnikVelocity.getVelocity == 240);
-		assert(sputnikAcceleration.getAcceleration == 5.00);
+		assert(sputnikVelocity.getVelocityDX() == 240.0);
+		assert(sputnikVelocity.getVelocityDY() == 240.0);
+		assert(sputnikAcceleration.getAccelerationDDX == 5.00);
+		assert(sputnikAcceleration.getAccelerationDDY == 5.00);
 
 		// teardown
 	}
@@ -77,10 +81,12 @@ private:
 		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(sputnikPosition.getMetersX() == 4848.00);
-		assert(sputnikPosition.getMetersY() == 4848.00);
-		assert(sputnikVelocity.getVelocity == 245.00);
-		assert(sputnikAcceleration.getAcceleration == 5.00);
+		assert(sputnikPosition.getMetersX() == 4608.0);
+		assert(sputnikPosition.getMetersY() == 4608.0);
+		assert(sputnikVelocity.getVelocityDX() == 245.0);
+		assert(sputnikVelocity.getVelocityDY() == 245.0);
+		assert(sputnikAcceleration.getAccelerationDDX == 5.00);
+		assert(sputnikAcceleration.getAccelerationDDY == 5.00);
 		// teardown
 
 	}
@@ -97,10 +103,12 @@ private:
 		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(sputnikPosition.getMetersX() == 240.00);
-		assert(sputnikPosition.getMetersY() == 240.00);
-		assert(sputnikVelocity.getVelocity == 5.00);
-		assert(sputnikAcceleration.getAcceleration == 0.00);
+		assert(sputnikPosition.getMetersX() == 240.0);
+		assert(sputnikPosition.getMetersY() == 240.0);
+		assert(sputnikVelocity.getVelocityDX() == 5.0);
+		assert(sputnikVelocity.getVelocityDY() == 5.0);
+		assert(sputnikAcceleration.getAccelerationDDX == 0.0);
+		assert(sputnikAcceleration.getAccelerationDDY == 0.0);
 		// teardown
 	}
 

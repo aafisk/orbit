@@ -3,12 +3,11 @@
 class Sputnik
 {
 public:
-	double applyPhysics(Position iP, Velocity iV, Acceleration acceleration)
+	void applyPhysics(Position iP, Velocity iV, Acceleration acceleration)
 	{
 		PhysicsManager physics;
 		Velocity velocity = physics.calculateVelocity(iV, acceleration);
 		Position pos = physics.calculateDistance(iP, velocity, acceleration);
-		return velocity, pos;
 	}
 
 	bool setToDead(bool isAlive)
