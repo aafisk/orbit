@@ -147,7 +147,6 @@
     <ClCompile Include="satelite.cpp" />
     <ClCompile Include="sputnik.cpp" />
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="testSputnik.cpp" />
     <ClCompile Include="uiDraw.cpp" />
     <ClCompile Include="uiInteract.cpp" />
     <ClCompile Include="velocity.cpp" />
