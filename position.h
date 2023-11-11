@@ -13,6 +13,7 @@
 
 #include <iostream> 
 #include <cmath>
+#include <cassert>
 
 class TestPosition;
 class Acceleration;
@@ -57,7 +58,7 @@ public:
    }
    double getZoom() const { return metersFromPixels; }
 
-private:
+protected:
    double x;                 // horizontal position
    double y;                 // vertical position
    static double metersFromPixels;
@@ -89,3 +90,36 @@ struct PT
 };
 
 
+class DummyPosition : Position
+{
+   DummyPosition() : Position() { }
+   DummyPosition(double x, double y) : Position() { assert(false); }
+   DummyPosition(const Position& pt) : Position() { assert(false); }
+   Position& operator = (const Position& pt) { assert(false); };
+
+   // getters
+   double getMetersX()       const { assert(false); return x; }
+   double getMetersY()       const { assert(false); return y; }
+   double getPixelsX()       const { assert(false); assert(false); return x / metersFromPixels; }
+   double getPixelsY()       const { assert(false); return y / metersFromPixels; }
+
+   // setters
+   void setMeters(double xMeters, double yMeters) { assert(false); x = xMeters; y = yMeters; }
+   void setMetersX(double xMeters) { assert(false); }
+   void setMetersY(double yMeters) { assert(false); }
+   void setPixelsX(double xPixels) { assert(false); }
+   void setPixelsY(double yPixels) { assert(false); }
+   void addMetersX(double dxMeters) { assert(false); }
+   void addMetersY(double dyMeters) { assert(false); }
+   void addPixelsX(double dxPixels) { assert(false); }
+   void addPixelsY(double dyPixels) { assert(false); }
+
+   // deal with the ratio of meters to pixels
+   void setZoom(double metersFromPixels) { assert(false); }
+   double getZoom() const { assert(false); return metersFromPixels; }
+};
+
+class StubPositionOnsurface: DummyPosition
+{
+
+};
