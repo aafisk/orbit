@@ -13,12 +13,17 @@ public:
 	{
 		void testNotMovingNoAcceleration();
 		void testNotMovingAcceleration();
-		void testMovingAcceleration();
+		void testMovingAccelerationAndVelocity();
 		void testMovingNoAcceleration();
 
 		void testDead();
 		void testAboutDead();
 	}
+
+
+	/**************************
+	Test applyPhysics
+	**************************/
 
 private:
 	void testNotMovingNoAccelleration()
@@ -26,16 +31,17 @@ private:
 		// setup
 		Sputnik sputnik;
 		PositionStub position;
-		VelocityStub velocity;
-		AccelerationStub acceleration;
+		VelocityStubNotMoving velocity;
+		AccelerationStubNotMoving acceleration;
 
 		// exercise
 		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(position == 0.00);
-		assert(velocity == 0.00);
-		assert(acceleration == 0.00);
+		assert(sputnikPosition.getMetersX() == 0.00);
+		assert(sputnikPosition.getMetersY() == 0.00);
+		assert(sputnikVelocity.getVelocity == 0.00);
+		assert(sputnikAcceleration.getAcceleration == 0.00);
 		// teardown
 	}
 
@@ -44,35 +50,37 @@ private:
 		// setup
 		Sputnik sputnik;
 		PositionStub position;
-		VelocityStub velocity;
-		AccelerationStub acceleration;
+		VelocityStubNotMoving velocity;
+		AccelerationStubMoving acceleration;
 
 		// exercise
 		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(position == 4608.00);
-		assert(velocity == 240);
-		assert(acceleration == 5.00);
+		assert(sputnikPosition.getMetersX() == 4608.00);
+		assert(sputnikPosition.getMetersY() == 4608.00);
+		assert(sputnikVelocity.getVelocity == 240);
+		assert(sputnikAcceleration.getAcceleration == 5.00);
 
 		// teardown
 	}
 
-	void testMovingAcceleration()
+	void testMovingAccelerationAndVelocity()
 	{
 		// setup
 		Sputnik sputnik;
 		PositionStub position;
-		VelocityStub velocity;
-		AccelerationStub acceleration;
+		VelocityStubMoving velocity;
+		AccelerationStubMoving acceleration;
 
 		// exercise
 		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(position == 4848.00);
-		assert(velocity == 245.00);
-		assert(acceleration == 5.00);
+		assert(sputnikPosition.getMetersX() == 4848.00);
+		assert(sputnikPosition.getMetersY() == 4848.00);
+		assert(sputnikVelocity.getVelocity == 245.00);
+		assert(sputnikAcceleration.getAcceleration == 5.00);
 		// teardown
 
 	}
@@ -82,18 +90,23 @@ private:
 		// setup
 		Sputnik sputnik;
 		PositionStub position;
-		VelocityStub velocity;
-		AccelerationStub acceleration;
+		VelocityStubMoving velocity;
+		AccelerationStubNotMoving acceleration;
 
 		// exercise
 		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
-		assert(position == 240.00);
-		assert(velocity == 5.00);
-		assert(acceleration == 0.00);
+		assert(sputnikPosition.getMetersX() == 240.00);
+		assert(sputnikPosition.getMetersY() == 240.00);
+		assert(sputnikVelocity.getVelocity == 5.00);
+		assert(sputnikAcceleration.getAcceleration == 0.00);
 		// teardown
 	}
+
+	/*************
+	Test setToDead
+	***************/
 
 	void testDead()
 	{
