@@ -213,7 +213,7 @@ private:
 		double direction = 0.0;
 
 		// Exercise
-		direction = physics.calculateGravity(position);
+		direction = physics.calculateGravityDirection(position);
 
 		// Verify
 		assert(direction != 0.0);
@@ -234,7 +234,7 @@ private:
 		double direction = 500.0;
 
 		// Exercise
-		direction = physics.calculateGravity(position);
+		direction = physics.calculateGravityDirection(position);
 
 		// Verify
 		assert(direction != 500.0);
@@ -255,7 +255,7 @@ private:
 		double direction = 0.0;
 
 		// Exercise
-		direction = physics.calculateGravity(position);
+		direction = physics.calculateGravityDirection(position);
 
 		// Verify
 		assert(direction != 0.0);
@@ -276,7 +276,7 @@ private:
 		double direction = 0.0;
 
 		// Exercise
-		direction = physics.calculateGravity(position);
+		direction = physics.calculateGravityDirection(position);
 
 		// Verify
 		assert(direction != 0.0);

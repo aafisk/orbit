@@ -90,21 +90,22 @@ struct PT
 };
 
 
-class DummyPosition : Position
+class DummyPosition : public Position
 {
+public:
    DummyPosition() : Position() { }
    DummyPosition(double x, double y) : Position() { assert(false); }
    DummyPosition(const Position& pt) : Position() { assert(false); }
    Position& operator = (const Position& pt) { assert(false); };
 
    // getters
-   double getMetersX()       const { assert(false); return x; }
-   double getMetersY()       const { assert(false); return y; }
-   double getPixelsX()       const { assert(false); assert(false); return x / metersFromPixels; }
-   double getPixelsY()       const { assert(false); return y / metersFromPixels; }
+   double getMetersX() const { assert(false); return x; }
+   double getMetersY() const { assert(false); return y; }
+   double getPixelsX() const { assert(false); assert(false); return x / metersFromPixels; }
+   double getPixelsY() const { assert(false); return y / metersFromPixels; }
 
    // setters
-   void setMeters(double xMeters, double yMeters) { assert(false); x = xMeters; y = yMeters; }
+   void setMeters(double xMeters, double yMeters) { assert(false); }
    void setMetersX(double xMeters) { assert(false); }
    void setMetersY(double yMeters) { assert(false); }
    void setPixelsX(double xPixels) { assert(false); }
@@ -119,7 +120,38 @@ class DummyPosition : Position
    double getZoom() const { assert(false); return metersFromPixels; }
 };
 
-class StubPositionOnsurface: DummyPosition
+class StubPositionOnsurface : public DummyPosition
 {
+   double getMetersX() const override { return 6378000.0; }
+   double getMetersY() const override { return 0.0; }
+};
 
+class StubPositionAbovesurface : public DummyPosition
+{
+   double getMetersX() const override { return 6383000.0; }
+   double getMetersY() const override { return 5000.0; }
+};
+
+class StubPositionAbove : public DummyPosition
+{
+   double getMetersX() const override { return 0.0; }
+   double getMetersY() const override { return 5000.0; }
+};
+
+class StubPositionBelow : public DummyPosition
+{
+   double getMetersX() const override { return 0.0; }
+   double getMetersY() const override { return -5000.0; }
+};
+
+class StubPositionLeft : public DummyPosition
+{
+   double getMetersX() const override { return -5000.0; }
+   double getMetersY() const override { return 0.0; }
+};
+
+class StubPositionRight : public DummyPosition
+{
+   double getMetersX() const override { return 5000.0; }
+   double getMetersY() const override { return 0.0; }
 };
