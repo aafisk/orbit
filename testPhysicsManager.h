@@ -29,7 +29,7 @@ private:
 	void calculateDistance_NotMoving()
 	{
 		// Setup
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		double position = 0.0;
 		double velocity = 0.0;
 		double acceleration = 0.0;
@@ -55,7 +55,7 @@ private:
 	void calculateDistance_Moving()
 	{
 		// Setup
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		double position = 0.0;
 		double velocity = 500.0;
 		double acceleration = 5.0;
@@ -80,7 +80,7 @@ private:
 
 	void calculateVelocity_NotMoving()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		double velocity = 0.0;
 		double acceleration = 0.0;
 		double newVelocity = 0.0;
@@ -103,7 +103,7 @@ private:
 
 	void calculateVelocity_Moving()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		double velocity = 500.0;
 		double acceleration = 5.0;
 		double newVelocity = 0.0;
@@ -126,8 +126,8 @@ private:
 
 	void calculateHeightAboveSurface_OnSurface()
 	{
-		PhysicsManager physics;
-		StubPositionOnSurface position = StubPositionOnSurface(6378000.0, 0.0);
+		PhysicsManager physics = PhysicsManager();
+		StubPositionOnsurface position = StubPositionOnSurface(6378000.0, 0.0);
 		double height = 500.0;
 
 		// Exercise
@@ -146,7 +146,7 @@ private:
 
 	void calculateHeightAboveSurface_AboveSurface()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		StubPositionAboveSurface position = StubPosition(6378000.0, 5000.0);
 		double height = 500.0;
 
@@ -166,7 +166,7 @@ private:
 
 	void calculateGravity_SeaLevel()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		double height = 0.0;
 		double gravity = 0.0;
 
@@ -187,7 +187,7 @@ private:
 
 	void calculateGravity_AboveSeaLevel()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		double height = 5000.0;
 		double gravity = 0.0;
 
@@ -208,7 +208,7 @@ private:
 
 	void getGravityDirection_Above()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		StubPositionAbove position = StubPositionAbove();
 		double direction = 0.0;
 
@@ -218,7 +218,8 @@ private:
 		// Verify
 		assert(direction != 0.0);
 		assert(direction == 3.14159265359);
-		assert(position == StubPositionAbove());
+		assert(position.getMetersX() == 0.0);
+		assert(position.getMetersX() == 5000.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -229,7 +230,7 @@ private:
 
 	void getGravityDirection_Below()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		StubPositionBelow position = StubPositionBelow();
 		double direction = 500.0;
 
@@ -239,7 +240,8 @@ private:
 		// Verify
 		assert(direction != 500.0);
 		assert(direction == 0.0);
-		assert(position == StubPositionAbove());
+		assert(position.getMetersX() == 0.0);
+		assert(position.getMetersX() == -5000.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -250,7 +252,7 @@ private:
 
 	void getGravityDirection_Left()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		StubPositionLeft position = StubPositionLeft();
 		double direction = 0.0;
 
@@ -260,7 +262,8 @@ private:
 		// Verify
 		assert(direction != 0.0);
 		assert(direction == 1.570796326795);
-		assert(position == StubPositionAbove());
+		assert(position.getMetersX() == -5000.0);
+		assert(position.getMetersX() == 0.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -271,7 +274,7 @@ private:
 
 	void getGravityDirection_Right()
 	{
-		PhysicsManager physics;
+		PhysicsManager physics = PhysicsManager();
 		StubPositionRight position = StubPositionRight();
 		double direction = 0.0;
 
@@ -281,7 +284,8 @@ private:
 		// Verify
 		assert(direction != 0.0);
 		assert(direction == -1.570796326795);
-		assert(position == StubPositionRight());
+		assert(position.getMetersX() == 5000.0);
+		assert(position.getMetersX() == 0.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);

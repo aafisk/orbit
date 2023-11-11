@@ -99,10 +99,10 @@ public:
    Position& operator = (const Position& pt) { assert(false); };
 
    // getters
-   double getMetersX() const { assert(false); return x; }
-   double getMetersY() const { assert(false); return y; }
-   double getPixelsX() const { assert(false); assert(false); return x / metersFromPixels; }
-   double getPixelsY() const { assert(false); return y / metersFromPixels; }
+   virtual double getMetersX() const { assert(false); return x; }
+   virtual double getMetersY() const { assert(false); return y; }
+   virtual double getPixelsX() const { assert(false); assert(false); return x / metersFromPixels; }
+   virtual double getPixelsY() const { assert(false); return y / metersFromPixels; }
 
    // setters
    void setMeters(double xMeters, double yMeters) { assert(false); }
@@ -122,36 +122,42 @@ public:
 
 class StubPositionOnsurface : public DummyPosition
 {
+public:
    double getMetersX() const override { return 6378000.0; }
    double getMetersY() const override { return 0.0; }
 };
 
 class StubPositionAbovesurface : public DummyPosition
 {
+public:
    double getMetersX() const override { return 6383000.0; }
    double getMetersY() const override { return 5000.0; }
 };
 
 class StubPositionAbove : public DummyPosition
 {
+public:
    double getMetersX() const override { return 0.0; }
    double getMetersY() const override { return 5000.0; }
 };
 
 class StubPositionBelow : public DummyPosition
 {
+public:
    double getMetersX() const override { return 0.0; }
    double getMetersY() const override { return -5000.0; }
 };
 
 class StubPositionLeft : public DummyPosition
 {
+public:
    double getMetersX() const override { return -5000.0; }
    double getMetersY() const override { return 0.0; }
 };
 
 class StubPositionRight : public DummyPosition
 {
+public:
    double getMetersX() const override { return 5000.0; }
    double getMetersY() const override { return 0.0; }
 };
