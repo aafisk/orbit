@@ -30,6 +30,10 @@ private:
 	{
 		// Setup
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		double position = 0.0;
 		double velocity = 0.0;
 		double acceleration = 0.0;
@@ -56,6 +60,10 @@ private:
 	{
 		// Setup
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		double position = 0.0;
 		double velocity = 500.0;
 		double acceleration = 5.0;
@@ -81,6 +89,10 @@ private:
 	void calculateVelocity_NotMoving()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		double velocity = 0.0;
 		double acceleration = 0.0;
 		double newVelocity = 0.0;
@@ -104,6 +116,10 @@ private:
 	void calculateVelocity_Moving()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		double velocity = 500.0;
 		double acceleration = 5.0;
 		double newVelocity = 0.0;
@@ -127,6 +143,10 @@ private:
 	void calculateHeightAboveSurface_OnSurface()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		StubPositionOnsurface position = StubPositionOnSurface(6378000.0, 0.0);
 		double height = 500.0;
 
@@ -147,6 +167,10 @@ private:
 	void calculateHeightAboveSurface_AboveSurface()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		StubPositionAboveSurface position = StubPosition(6378000.0, 5000.0);
 		double height = 500.0;
 
@@ -167,6 +191,10 @@ private:
 	void calculateGravity_SeaLevel()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		double height = 0.0;
 		double gravity = 0.0;
 
@@ -188,6 +216,10 @@ private:
 	void calculateGravity_AboveSeaLevel()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		double height = 5000.0;
 		double gravity = 0.0;
 
@@ -209,6 +241,10 @@ private:
 	void getGravityDirection_Above()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		StubPositionAbove position = StubPositionAbove();
 		double direction = 0.0;
 
@@ -231,6 +267,10 @@ private:
 	void getGravityDirection_Below()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		StubPositionBelow position = StubPositionBelow();
 		double direction = 500.0;
 
@@ -252,7 +292,11 @@ private:
 
 	void getGravityDirection_Left()
 	{
-		PhysicsManager physics = PhysicsManager();
+		PhysicsManager physics;
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		StubPositionLeft position = StubPositionLeft();
 		double direction = 0.0;
 
@@ -262,8 +306,8 @@ private:
 		// Verify
 		assert(direction != 0.0);
 		assert(direction == 1.570796326795);
-		assert(position.getMetersX() == -5000.0);
-		assert(position.getMetersX() == 0.0);
+		assert(position.x() == -5000.0);
+		assert(position.x() == 0.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -275,6 +319,10 @@ private:
 	void getGravityDirection_Right()
 	{
 		PhysicsManager physics = PhysicsManager();
+		physics.secondsPerFrame == 48.0;
+		physics.earthRadius == 6378000.0;
+		physics.gravityAtSea == 9.80665;
+		physics.geoOrbit == 42164000.0;
 		StubPositionRight position = StubPositionRight();
 		double direction = 0.0;
 
