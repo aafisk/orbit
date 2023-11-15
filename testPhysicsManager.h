@@ -26,6 +26,12 @@ public:
 	}
 
 private:
+	bool closeEnough(double value, double test, double tolerance) const
+	{
+		double difference = value - test;
+		return (difference >= -tolerance) && (difference <= tolerance);
+	}
+
 	void calculateDistance_NotMoving()
 	{
 		// Setup
@@ -186,7 +192,7 @@ private:
 		// Verify
 		assert(height != 0.0);
 
-		assert(height == 5001.9583265054971);
+		assert(closeEnough(height, 5001.9583, 0.0001));
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
