@@ -45,9 +45,6 @@
     <ClCompile Include="satelite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sputnik.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
@@ -78,9 +75,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="satelite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sputnik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testPhysicsManager.h">

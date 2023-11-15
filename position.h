@@ -123,6 +123,7 @@ public:
 class StubPositionOnsurface : public DummyPosition
 {
 public:
+   friend class TestPhysicsManager;
    double getMetersX() const override { return 6378000.0; }
    double getMetersY() const override { return 0.0; }
 };
@@ -130,6 +131,7 @@ public:
 class StubPositionAbovesurface : public DummyPosition
 {
 public:
+   friend class TestPhysicsManager;
    double getMetersX() const override { return 6383000.0; }
    double getMetersY() const override { return 5000.0; }
 };

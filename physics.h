@@ -3,14 +3,12 @@
 #include "acceleration.h"
 #include "velocity.h"
 #include "position.h"
-#include "testPhysicsManager.h"
 
 class PhysicsManager
 {
 public:
-	friend TestPhysicsManager;
-	PhysicsManager();
-
+	friend class TestPhysicsManager;
+	PhysicsManager() {};									
 	double calculateVerticalComponent(double gravity, double angle);
 	double calculateHorizontalComponent(double gravity, double angle);
 	double calculateDistance(double position, double velocity, double acceleration);
