@@ -33,7 +33,6 @@ double PhysicsManager::calculateHeightAboveSurface(Position position)
 	double y = position.getMetersY();
 	double inner = (x * x) + (y * y);
 	double result = sqrt(inner) - earthRadius;
-	cout << "result: " << result << endl;
 	return result;
 }
 

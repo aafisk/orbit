@@ -185,7 +185,6 @@ private:
 
 		// Verify
 		assert(height != 0.0);
-		cout << "height: " << height << endl;
 
 		assert(height == 5001.9583265054971);
 		assert(physics.secondsPerFrame == 48.0);
