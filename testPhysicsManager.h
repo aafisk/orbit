@@ -11,8 +11,8 @@ class TestPhysicsManager
 public:
 	void runTests()
 	{
-		//calculateDistance_NotMoving();
-		//calculateDistance_Moving();
+		calculateDistance_NotMoving();
+		calculateDistance_Moving();
 		//calculateVelocity_NotMoving();
 		//calculateVelocity_Moving();
 		calculateHeightAboveSurface_OnSurface();
@@ -40,20 +40,29 @@ private:
 		physics.earthRadius = 6378000.0;
 		physics.gravityAtSea = 9.80665;
 		physics.geoOrbit = 42164000.0;
-		double position = 0.0;
-		double velocity = 0.0;
-		double acceleration = 0.0;
-		double distance = 500.0;
+		DummyPosition position;
+		position.x = 0.0;
+		position.y = 0.0;
+		DummyVelocity velocity;
+		velocity.dx = 0.0;
+		velocity.dy = 0.0;
+		DummyAcceleration acceleration;
+		acceleration.ddx = 0.0;
+		acceleration.ddy = 0.0;
+		double distanceX = 500.0;
 
 		// Exercise
-		distance = physics.calculateDistance(position, velocity, acceleration);
+		distanceX = physics.calculateDistance(position.x, velocity.dx, acceleration.ddx);
 
 		// Verify
-		assert(distance != 500.0);
-		assert(distance == 0.0);
-		assert(position == 0.0);
-		assert(velocity == 0.0);
-		assert(acceleration == 0.0);
+		assert(distanceX != 500.0);
+		assert(distanceX == 0.0);
+		assert(position.x == 0.0);
+		assert(position.y == 0.0);
+		assert(velocity.dx == 0.0);
+		assert(velocity.dy == 0.0);
+		assert(acceleration.ddx == 0.0);
+		assert(acceleration.ddy == 0.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -70,20 +79,29 @@ private:
 		physics.earthRadius = 6378000.0;
 		physics.gravityAtSea = 9.80665;
 		physics.geoOrbit = 42164000.0;
-		double position = 0.0;
-		double velocity = 500.0;
-		double acceleration = 5.0;
-		double distance = 0.0;
+		DummyPosition position;
+		position.x = 0.0;
+		position.y = 0.0;
+		DummyVelocity velocity;
+		velocity.dx = 500.0;
+		velocity.dy = 500.0;
+		DummyAcceleration acceleration;
+		acceleration.ddx = 5.0;
+		acceleration.ddy = 5.0;
+		double distanceX = 0.0;
 
 		// Exercise
-		distance = physics.calculateDistance(position, velocity, acceleration);
+		distanceX = physics.calculateDistance(position.x, velocity.dx, acceleration.ddx);
 
 		// Verify
-		assert(distance != 0.0);
-		assert(distance == 29760.0);
-		assert(position == 0.0);
-		assert(velocity == 0.0);
-		assert(acceleration == 0.0);
+		assert(distanceX != 0.0);
+		assert(closeEnough(29760.0, distanceX, 0.001));
+		assert(position.x == 0.0);
+		assert(position.y == 0.0);
+		assert(velocity.dx == 500.0);
+		assert(velocity.dy == 500.0);
+		assert(acceleration.ddx == 5.0);
+		assert(acceleration.ddy == 5.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);

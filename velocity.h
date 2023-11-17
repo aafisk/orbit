@@ -1,18 +1,47 @@
 #pragma once
+
+#include <cassert>
+
 class Velocity
 {
 public:
-	Velocity();
-	Velocity(double dx, double dy);
+	Velocity() : dx(0.0), dy(0.0) {}
+	Velocity(double ddx, double ddy);
 
-	double getDx();
-	double getDy();
-	double getSpeed();
-	void setDx(double dx);
-	void setDy(double dy);
+	double getDdx() const { return dx; }
+	double getDdy() const { return dy; }
+	void setDdx(double setDx) { dx = setDx; }
+	void setDdy(double setDy) { dy = setDy; }
 
-private:
+protected:
 	double dx;
 	double dy;
 };
 
+class DummyVelocity : public Velocity
+{
+public:
+	friend class TestPhysicsManager;
+	DummyVelocity() : Velocity() {}
+	virtual double getDx() const { assert(false); return 0.0; }
+	virtual double getDy() const { assert(false); return 0.0; }
+	virtual double getSpeed() const { assert(false); return 0.0; }
+	virtual void setDx(double dx) { assert(false); }
+	virtual void setDy(double dy) { assert(false); }
+};
+
+class StubVelocityNotMoving : public DummyVelocity
+{
+public:
+	friend class TestPhysicsManager;
+	double getDx() const override { return 0.0; }
+	double getDy() const override { return 0.0; }
+};
+
+class StubVelocityMoving : public DummyVelocity
+{
+public:
+	friend class TestPhysicsManager;
+	double getDx() const override { return 500.0; }
+	double getDy() const override { return 500.0; }
+};

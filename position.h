@@ -93,6 +93,7 @@ struct PT
 class DummyPosition : public Position
 {
 public:
+   friend class TestPhysicsManager;
    DummyPosition() : Position() { }
    DummyPosition(double x, double y) : Position() { assert(false); }
    DummyPosition(const Position& pt) : Position() { assert(false); }
@@ -118,6 +119,14 @@ public:
    // deal with the ratio of meters to pixels
    void setZoom(double metersFromPixels) { assert(false); }
    double getZoom() const { assert(false); return metersFromPixels; }
+};
+
+class StubPosition00 : public DummyPosition
+{
+public:
+   friend class TestPhysicsManager;
+   double getMetersX() const override { return 0.0; }
+   double getMetersY() const override { return 0.0; }
 };
 
 class StubPositionOnsurface : public DummyPosition

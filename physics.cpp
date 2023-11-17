@@ -14,7 +14,10 @@ double PhysicsManager::calculateHorizontalComponent(double gravity, double angle
 
 double PhysicsManager::calculateDistance(double position, double velocity, double acceleration)
 {
-	return 0.0;
+	double part1 = velocity * secondsPerFrame;
+	double part2 = acceleration * (secondsPerFrame * secondsPerFrame) * 0.5;
+	double distance = position + part1 + part2;
+	return distance;
 }
 
 double PhysicsManager::calculateVelocity(double velocity, double acceleration)
