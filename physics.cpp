@@ -27,7 +27,9 @@ double PhysicsManager::calculateVelocity(double velocity, double acceleration)
 
 double PhysicsManager::calculateGravity(double heightAboveSurface)
 {
-	return 0.0;
+	double inner = earthRadius/ (earthRadius + heightAboveSurface);
+	double gravity = gravityAtSea * (inner * inner);
+	return gravity;
 }
 
 double PhysicsManager::calculateHeightAboveSurface(Position position)

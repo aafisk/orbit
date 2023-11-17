@@ -17,8 +17,8 @@ public:
 		calculateVelocity_Moving();
 		calculateHeightAboveSurface_OnSurface();
 		calculateHeightAboveSurface_AboveSurface();
-		//calculateGravity_SeaLevel();
-		//calculateGravity_AboveSeaLevel();
+		calculateGravity_SeaLevel();
+		calculateGravity_AboveSeaLevel();
 		//getGravityDirection_Above();
 		//getGravityDirection_Below();
 		//getGravityDirection_Left();
@@ -254,7 +254,7 @@ private:
 
 		// Verify
 		assert(gravity != 0.0);
-		assert(gravity == 9.80665);
+		assert(closeEnough(9.80665, gravity, 0.001));
 		assert(height == 0.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
@@ -279,8 +279,8 @@ private:
 
 		// Verify
 		assert(gravity != 0.0);
-		assert(gravity == 9.791292);
-		assert(height == 0.0);
+		assert(closeEnough(9.791292, gravity, 0.001));
+		assert(height == 5000.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
