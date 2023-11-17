@@ -13,8 +13,8 @@ public:
 	{
 		calculateDistance_NotMoving();
 		calculateDistance_Moving();
-		//calculateVelocity_NotMoving();
-		//calculateVelocity_Moving();
+		calculateVelocity_NotMoving();
+		calculateVelocity_Moving();
 		calculateHeightAboveSurface_OnSurface();
 		calculateHeightAboveSurface_AboveSurface();
 		//calculateGravity_SeaLevel();
@@ -117,18 +117,28 @@ private:
 		physics.earthRadius = 6378000.0;
 		physics.gravityAtSea = 9.80665;
 		physics.geoOrbit = 42164000.0;
-		double velocity = 0.0;
-		double acceleration = 0.0;
-		double newVelocity = 0.0;
+		DummyVelocity velocity;
+		velocity.dx = 0.0;
+		velocity.dy = 0.0;
+		DummyAcceleration acceleration;
+		acceleration.ddx = 0.0;
+		acceleration.ddy = 0.0;
+		double velocityX = 500.0;
+		double velocityY = 500.0;
 
 		// Exercise
-		newVelocity = physics.calculateVelocity(velocity, acceleration);
+		velocityX = physics.calculateVelocity(velocity.dx, acceleration.ddx);
+		velocityY = physics.calculateVelocity(velocity.dy, acceleration.ddy);
 
 		// Verify
-		assert(newVelocity != 0.0);
-		assert(newVelocity == 29760.0);
-		assert(velocity == 0.0);
-		assert(acceleration == 0.0);
+		assert(velocityX != 500.0);
+		assert(velocityX == 0.0);
+		assert(velocityY != 500.0);
+		assert(velocityY == 0.0);
+		assert(velocity.dx == 0.0);
+		assert(velocity.dy == 0.0);
+		assert(acceleration.ddx == 0.0);
+		assert(acceleration.ddy == 0.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -144,18 +154,28 @@ private:
 		physics.earthRadius = 6378000.0;
 		physics.gravityAtSea = 9.80665;
 		physics.geoOrbit = 42164000.0;
-		double velocity = 500.0;
-		double acceleration = 5.0;
-		double newVelocity = 0.0;
+		DummyVelocity velocity;
+		velocity.dx = 500.0;
+		velocity.dy = 500.0;
+		DummyAcceleration acceleration;
+		acceleration.ddx = 5.0;
+		acceleration.ddy = 5.0;
+		double velocityX = 0.0;
+		double velocityY = 0.0;
 
 		// Exercise
-		newVelocity = physics.calculateVelocity(velocity, acceleration);
+		velocityX = physics.calculateVelocity(velocity.dx, acceleration.ddx);
+		velocityY = physics.calculateVelocity(velocity.dy, acceleration.ddy);
 
 		// Verify
-		assert(newVelocity != 0.0);
-		assert(newVelocity == 29760.0);
-		assert(velocity == 0.0);
-		assert(acceleration == 0.0);
+		assert(velocityX != 0.0);
+		assert(velocityX == 740.0);
+		assert(velocityY != 0.0);
+		assert(velocityY == 740.0);
+		assert(velocity.dx == 500.0);
+		assert(velocity.dy == 500.0);
+		assert(acceleration.ddx == 5.0);
+		assert(acceleration.ddy == 5.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);

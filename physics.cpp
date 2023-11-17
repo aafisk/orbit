@@ -22,7 +22,7 @@ double PhysicsManager::calculateDistance(double position, double velocity, doubl
 
 double PhysicsManager::calculateVelocity(double velocity, double acceleration)
 {
-	return 0.0;
+	return velocity + (acceleration * secondsPerFrame);
 }
 
 double PhysicsManager::calculateGravity(double heightAboveSurface)
