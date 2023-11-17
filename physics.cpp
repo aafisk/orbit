@@ -42,5 +42,8 @@ double PhysicsManager::calculateHeightAboveSurface(Position position)
 
 double PhysicsManager::calculateGravityDirection(Position satelitePosition)
 {
-	return 0.0;
+	double x = 0 - satelitePosition.getMetersX();
+	double y = 0 - satelitePosition.getMetersY();
+	double direction = atan2(x, y);
+	return direction;
 }

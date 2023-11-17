@@ -19,10 +19,10 @@ public:
 		calculateHeightAboveSurface_AboveSurface();
 		calculateGravity_SeaLevel();
 		calculateGravity_AboveSeaLevel();
-		//getGravityDirection_Above();
-		//getGravityDirection_Below();
-		//getGravityDirection_Left();
-		//getGravityDirection_Right();
+		getGravityDirection_Above();
+		getGravityDirection_Below();
+		getGravityDirection_Left();
+		getGravityDirection_Right();
 	}
 
 private:
@@ -296,7 +296,9 @@ private:
 		physics.earthRadius = 6378000.0;
 		physics.gravityAtSea = 9.80665;
 		physics.geoOrbit = 42164000.0;
-		StubPositionAbove position = StubPositionAbove();
+		DummyPosition position;
+		position.x = 0.0;
+		position.y = 6383000.0;
 		double direction = 0.0;
 
 		// Exercise
@@ -304,9 +306,9 @@ private:
 
 		// Verify
 		assert(direction != 0.0);
-		assert(direction == 3.14159265359);
-		assert(position.getMetersX() == 0.0);
-		assert(position.getMetersX() == 5000.0);
+		assert(closeEnough(3.14159265359, direction, 0.001));
+		assert(position.x == 0.0);
+		assert(position.y == 6383000.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -322,7 +324,9 @@ private:
 		physics.earthRadius = 6378000.0;
 		physics.gravityAtSea = 9.80665;
 		physics.geoOrbit = 42164000.0;
-		StubPositionBelow position = StubPositionBelow();
+		DummyPosition position;
+		position.x = 0.0;
+		position.y = -6383000.0;
 		double direction = 500.0;
 
 		// Exercise
@@ -330,9 +334,9 @@ private:
 
 		// Verify
 		assert(direction != 500.0);
-		assert(direction == 0.0);
-		assert(position.getMetersX() == 0.0);
-		assert(position.getMetersX() == -5000.0);
+		assert(closeEnough(0.0, direction, 0.001));
+		assert(position.x == 0.0);
+		assert(position.y == -6383000.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -348,7 +352,9 @@ private:
 		physics.earthRadius = 6378000.0;
 		physics.gravityAtSea = 9.80665;
 		physics.geoOrbit = 42164000.0;
-		StubPositionLeft position = StubPositionLeft();
+		DummyPosition position;
+		position.x = -6383000.0;
+		position.y = 0.0;
 		double direction = 0.0;
 
 		// Exercise
@@ -356,9 +362,9 @@ private:
 
 		// Verify
 		assert(direction != 0.0);
-		assert(direction == 1.570796326795);
-		//assert(position.x() == -5000.0);
-		//assert(position.x() == 0.0);
+		assert(closeEnough(1.570796326795, direction, 0.001));
+		assert(position.x == -6383000.0);
+		assert(position.y == 0.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
@@ -374,7 +380,9 @@ private:
 		physics.earthRadius = 6378000.0;
 		physics.gravityAtSea = 9.80665;
 		physics.geoOrbit = 42164000.0;
-		StubPositionRight position = StubPositionRight();
+		DummyPosition position;
+		position.x = 6383000.0;
+		position.y = 0.0;
 		double direction = 0.0;
 
 		// Exercise
@@ -382,9 +390,9 @@ private:
 
 		// Verify
 		assert(direction != 0.0);
-		assert(direction == -1.570796326795);
-		assert(position.getMetersX() == 5000.0);
-		assert(position.getMetersX() == 0.0);
+		assert(closeEnough(-1.570796326795, direction, 0.001));
+		assert(position.x == 6383000.0);
+		assert(position.y == 0.0);
 		assert(physics.secondsPerFrame == 48.0);
 		assert(physics.earthRadius == 6378000.0);
 		assert(physics.gravityAtSea == 9.80665);
