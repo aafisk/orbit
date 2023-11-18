@@ -34,7 +34,9 @@ private:
 		VelocityStubNotMoving velocity;
 		AccelerationStubNotMoving acceleration;
 
+
 		// exercise
+
 		sputnik.applyPhysics(position, velocity, acceleration);
 
 		// verify
@@ -54,9 +56,10 @@ private:
 		PositionStub position;
 		VelocityStubNotMoving velocity;
 		AccelerationStubMoving acceleration;
+		PhysicsManager physics;
 
 		// exercise
-		sputnik.applyPhysics(position, velocity, acceleration);
+		sputnik.applyPhysics(physics);
 
 		// verify
 		assert(sputnikPosition.getMetersX() == 4608.00);
