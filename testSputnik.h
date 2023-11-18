@@ -17,8 +17,8 @@ public:
 
 		testNotMovingNoAcceleration();
 		testNotMovingAcceleration();
-		void testMovingAccelerationAndVelocity();
-		void testMovingNoAcceleration();
+		testMovingAccelerationAndVelocity();
+		testMovingNoAcceleration();
 	}
 
 
@@ -83,59 +83,85 @@ private:
 		// verify
 		assert(sputnik.position.getMetersX() == 5760.00);
 		assert(sputnik.position.getMetersY() == 5760.00);
-		//assert(velocity.dx == 240.0);
-		//assert(velocity.dy == 240.0);
-		//assert(acceleration.ddx == 5.00);
-		//assert(acceleration.ddy == 5.00);
+		assert(sputnik.velocity.getDx() == 240.0);
+		assert(sputnik.velocity.getDy() == 240.0);
+		assert(sputnik.acceleration.getDdx() == 5.00);
+		assert(sputnik.acceleration.getDdy() == 5.00);
 
 		// teardown
 		delete physics;
 	}
 
-	//void testMovingAccelerationAndVelocity()
-	//{
-	//	// setup
-	//	Sputnik sputnik;
-	//	DummyPosition position;
-	//	DummyVelocity velocity;
-	//	DummyAcceleration acceleration;
-	//	PhysicsManager physicsManager;
+	void testMovingAccelerationAndVelocity()
+	{
+		// setup
+		Sputnik sputnik;
+		StubPosition00 position;
+		position.x = 0.0;
+		position.y = 0.0;
+		sputnik.position = position;
+		StubVelocityNotMoving velocity;
+		velocity.dx = 5.0;
+		velocity.dy = 5.0;
+		sputnik.velocity = velocity;
+		StubAccelerationMoving acceleration;
+		acceleration.ddx = 5.0;
+		acceleration.ddy = 5.0;
+		sputnik.acceleration = acceleration;
+		PhysicsManager* physics = new PhysicsManager();
+		physics->secondsPerFrame = 48.0;
+		physics->earthRadius = 6378000.0;
+		physics->gravityAtSea = 9.80665;
+		physics->geoOrbit = 42164000.0;
 
-	//	// exercise
-	//	sputnik.applyPhysics(physicsManager);
+		// exercise
+		sputnik.applyPhysics(*physics);
 
-	//	// verify
-	//	assert(position.getMetersX() == 4608.0);
-	//	assert(position.getMetersY() == 4608.0);
-	//	assert(velocity.getDx() == 245.0);
-	//	assert(velocity.getDy() == 245.0);
-	//	assert(acceleration.getDdx() == 5.00);
-	//	assert(acceleration.getDdy() == 5.00);
-	//	// teardown
+		// verify
+		assert(sputnik.position.getMetersX() == 6000.0);
+		assert(sputnik.position.getMetersY() == 6000.0);
+		assert(sputnik.velocity.getDx() == 245.0);
+		assert(sputnik.velocity.getDy() == 245.0);
+		assert(sputnik.acceleration.getDdx() == 5.00);
+		assert(sputnik.acceleration.getDdy() == 5.00);
+		// teardown
+		delete physics;
+	}
 
-	//}
+	void testMovingNoAcceleration()
+	{
+		// setup
+		Sputnik sputnik;
+		StubPosition00 position;
+		position.x = 0.0;
+		position.y = 0.0;
+		sputnik.position = position;
+		StubVelocityNotMoving velocity;
+		velocity.dx = 5.0;
+		velocity.dy = 5.0;
+		sputnik.velocity = velocity;
+		StubAccelerationMoving acceleration;
+		acceleration.ddx = 0.0;
+		acceleration.ddy = 0.0;
+		sputnik.acceleration = acceleration;
+		PhysicsManager* physics = new PhysicsManager();
+		physics->secondsPerFrame = 48.0;
+		physics->earthRadius = 6378000.0;
+		physics->gravityAtSea = 9.80665;
+		physics->geoOrbit = 42164000.0;
 
-	//void testMovingNoAcceleration()
-	//{
-	//	// setup
-	//	Sputnik sputnik;
-	//	DummyPosition position;
-	//	DummyVelocity velocity;
-	//	DummyAcceleration acceleration;
-	//	PhysicsManager physicsManager;
+		// exercise
+		sputnik.applyPhysics(*physics);
 
-	//	// exercise
-	//	sputnik.applyPhysics(physicsManager);
-
-	//	// verify
-	//	assert(position.getMetersX() == 240.0);
-	//	assert(position.getMetersY() == 240.0);
-	//	assert(velocity.getDx() == 5.0);
-	//	assert(velocity.getDy() == 5.0);
-	//	assert(acceleration.getDdx() == 0.0);
-	//	assert(acceleration.getDdy() == 0.0);
-	//	// teardown
-	//}
+		// verify
+		assert(sputnik.position.getMetersX() == 240.0);
+		assert(sputnik.position.getMetersY() == 240.0);
+		assert(sputnik.velocity.getDx() == 5.0);
+		assert(sputnik.velocity.getDy() == 5.0);
+		assert(sputnik.acceleration.getDdx() == 0.0);
+		assert(sputnik.acceleration.getDdy() == 0.0);
+		// teardown
+	}
 
 	///*************
 	//Test setToDead
