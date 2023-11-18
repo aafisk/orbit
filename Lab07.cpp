@@ -274,11 +274,10 @@ double Position::metersFromPixels = 40.0;
 //   return 0;
 //}
 
-#include "testPhysicsManager.h"
+#include "test.h"
 
 int main()
 {
-   TestPhysicsManager physicsTest;
-   physicsTest.runTests();
+   testRunner();
    cout << "Tests pass!" << endl;
 }

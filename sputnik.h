@@ -1,46 +1,16 @@
 #pragma once
 #include "physics.h"
+#include "position.h"
+#include "acceleration.h"
+#include"velocity.h"
 class Sputnik
 {
 public:
-	void applyPhysics(Position iP, Velocity iV, Acceleration acceleration)
-	{
-		PhysicsManager physics;
-		Velocity velocity = physics.calculateVelocity(iV, acceleration);
-		Position pos = physics.calculateDistance(iP, velocity, acceleration);
-	}
+	friend class TestSputnik;
+	void applyPhysics(PhysicsManager);
 
-	bool setToDead(bool isAlive)
-	{
-		return false;
-	}
-};
-
-
-/******************
-* STUBS
-****************/
-class VelocityStubNotMoving : Velocity
-{
-	double getVelocity()		const { return 0.00; }
-};
-
-class VelocityStubMoving : Velocity
-{
-	double getVelocity()		const { return 5.00; }
-};
-
-class PositionStub : Position
-{
-	double getPosition()		const { return 0.00; }
-};
-
-class AccelerationStubNotMoving : Acceleration
-{
-	double getAcceleration()		const { return 0.00; }
-};
-
-class AccelerationStubMoving : Acceleration
-{
-	double getAcceleration()		const { return 5.00; }
+	bool setToDead(bool isAlive);
+private:
+	double x;
+	double y;
 };

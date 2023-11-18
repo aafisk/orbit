@@ -1,15 +1,16 @@
 #pragma once
 
-#include <iostream>
 #include "sputnik.h"
+#include "physics.h"
+#include "position.h"
+#include "acceleration.h"
+#include"velocity.h"
 #include <cassert>
-
-using namespace std;
 
 class TestSputnik
 {
 public:
-	void run()
+	void runTests()
 	{
 		void testNotMovingNoAcceleration();
 		void testNotMovingAcceleration();
@@ -26,26 +27,31 @@ public:
 	**************************/
 
 private:
+	bool closeEnough(double value, double test, double tolerance) const
+	{
+		double difference = value - test;
+		return (difference >= -tolerance) && (difference <= tolerance);
+	}
+
 	void testNotMovingNoAccelleration()
 	{
 		// setup
 		Sputnik sputnik;
-		PositionStub position;
-		VelocityStubNotMoving velocity;
-		AccelerationStubNotMoving acceleration;
-
+		DummyPosition position;
+		DummyVelocity velocity;
+		DummyAcceleration acceleration;
+		PhysicsManager physicsManager;
 
 		// exercise
-
-		sputnik.applyPhysics(position, velocity, acceleration);
+		sputnik.applyPhysics(physicsManager);
 
 		// verify
-		assert(sputnikPosition.getMetersX() == 0.0);
-		assert(sputnikPosition.getMetersY() == 0.0);
-		assert(sputnikVelocity.getVelocityDX() == 0.0);
-		assert(sputnikVelocity.getVelocityDY() == 0.0);
-		assert(sputnikAcceleration.getAccelerationDDX == 0.0);
-		assert(sputnikAcceleration.getAccelerationDDY == 0.0);
+		assert(position.getMetersX() == 0.0);
+		assert(position.getMetersY() == 0.0);
+		assert(velocity.getDx() == 0.0);
+		assert(velocity.getDy() == 0.0);
+		assert(acceleration.getDdx() == 0.0);
+		assert(acceleration.getDdy() == 0.0);
 		// teardown
 	}
 
@@ -53,21 +59,21 @@ private:
 	{
 		// setup
 		Sputnik sputnik;
-		PositionStub position;
-		VelocityStubNotMoving velocity;
-		AccelerationStubMoving acceleration;
-		PhysicsManager physics;
+		DummyPosition position;
+		DummyVelocity velocity;
+		DummyAcceleration acceleration;
+		PhysicsManager physicsManager;
 
 		// exercise
-		sputnik.applyPhysics(physics);
+		sputnik.applyPhysics(physicsManager);
 
 		// verify
-		assert(sputnikPosition.getMetersX() == 4608.00);
-		assert(sputnikPosition.getMetersY() == 4608.00);
-		assert(sputnikVelocity.getVelocityDX() == 240.0);
-		assert(sputnikVelocity.getVelocityDY() == 240.0);
-		assert(sputnikAcceleration.getAccelerationDDX == 5.00);
-		assert(sputnikAcceleration.getAccelerationDDY == 5.00);
+		assert(position.getMetersX() == 4608.00);
+		assert(position.getMetersY() == 4608.00);
+		assert(velocity.getDx() == 240.0);
+		assert(velocity.getDy() == 240.0);
+		assert(acceleration.getDdx() == 5.00);
+		assert(acceleration.getDdy() == 5.00);
 
 		// teardown
 	}
@@ -76,20 +82,21 @@ private:
 	{
 		// setup
 		Sputnik sputnik;
-		PositionStub position;
-		VelocityStubMoving velocity;
-		AccelerationStubMoving acceleration;
+		DummyPosition position;
+		DummyVelocity velocity;
+		DummyAcceleration acceleration;
+		PhysicsManager physicsManager;
 
 		// exercise
-		sputnik.applyPhysics(position, velocity, acceleration);
+		sputnik.applyPhysics(physicsManager);
 
 		// verify
-		assert(sputnikPosition.getMetersX() == 4608.0);
-		assert(sputnikPosition.getMetersY() == 4608.0);
-		assert(sputnikVelocity.getVelocityDX() == 245.0);
-		assert(sputnikVelocity.getVelocityDY() == 245.0);
-		assert(sputnikAcceleration.getAccelerationDDX == 5.00);
-		assert(sputnikAcceleration.getAccelerationDDY == 5.00);
+		assert(position.getMetersX() == 4608.0);
+		assert(position.getMetersY() == 4608.0);
+		assert(velocity.getDx() == 245.0);
+		assert(velocity.getDy() == 245.0);
+		assert(acceleration.getDdx() == 5.00);
+		assert(acceleration.getDdy() == 5.00);
 		// teardown
 
 	}
@@ -98,26 +105,27 @@ private:
 	{
 		// setup
 		Sputnik sputnik;
-		PositionStub position;
-		VelocityStubMoving velocity;
-		AccelerationStubNotMoving acceleration;
+		DummyPosition position;
+		DummyVelocity velocity;
+		DummyAcceleration acceleration;
+		PhysicsManager physicsManager;
 
 		// exercise
-		sputnik.applyPhysics(position, velocity, acceleration);
+		sputnik.applyPhysics(physicsManager);
 
 		// verify
-		assert(sputnikPosition.getMetersX() == 240.0);
-		assert(sputnikPosition.getMetersY() == 240.0);
-		assert(sputnikVelocity.getVelocityDX() == 5.0);
-		assert(sputnikVelocity.getVelocityDY() == 5.0);
-		assert(sputnikAcceleration.getAccelerationDDX == 0.0);
-		assert(sputnikAcceleration.getAccelerationDDY == 0.0);
+		assert(position.getMetersX() == 240.0);
+		assert(position.getMetersY() == 240.0);
+		assert(velocity.getDx() == 5.0);
+		assert(velocity.getDy() == 5.0);
+		assert(acceleration.getDdx() == 0.0);
+		assert(acceleration.getDdy() == 0.0);
 		// teardown
 	}
 
-	/*************
-	Test setToDead
-	***************/
+	///*************
+	//Test setToDead
+	//***************/
 
 	void testDead()
 	{
