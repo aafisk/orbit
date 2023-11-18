@@ -7,10 +7,12 @@ class Sputnik
 {
 public:
 	friend class TestSputnik;
-	void applyPhysics(PhysicsManager);
+	double applyPhysics(PhysicsManager);
 
 	bool setToDead(bool isAlive);
+
 private:
-	double x;
-	double y;
+	Velocity velocity;
+	Position position;
+	Acceleration acceleration;
 };

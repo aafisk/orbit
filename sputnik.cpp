@@ -1,9 +1,13 @@
 #include "sputnik.h"
 
-void Sputnik::applyPhysics(PhysicsManager physicsManager)
+
+double Sputnik::applyPhysics(PhysicsManager physicsManager)
 {
-	physicsManager.calculateVelocity(0.0, 0.0);
-	physicsManager.calculateDistance(0.0, 0.0, 0.0);
+	velocity.dx = physicsManager.calculateVelocity(velocity.dx, acceleration.ddx);
+	position.x = physicsManager.calculateDistance(position.x, velocity.dx, acceleration.ddx);
+
+	velocity.dy = physicsManager.calculateVelocity(velocity.dy, acceleration.ddy);
+	position.y = physicsManager.calculateDistance(position.y, velocity.dy, acceleration.ddy);
 }
 
 

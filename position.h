@@ -94,6 +94,7 @@ class DummyPosition : public Position
 {
 public:
    friend class TestPhysicsManager;
+   friend class TestSputnik;
    DummyPosition() : Position() { }
    DummyPosition(double x, double y) : Position() { assert(false); }
    DummyPosition(const Position& pt) : Position() { assert(false); }

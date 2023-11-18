@@ -22,6 +22,7 @@ class DummyAcceleration : public Acceleration
 {
 public:
 	friend class TestPhysicsManager;
+	friend class TestSputnik;
 	DummyAcceleration() : Acceleration() {}
 	virtual double getDdx() const { assert(false); return 0.0; }
 	virtual double getDdy() const { assert(false); return 0.0; }
