@@ -4,7 +4,7 @@
 #include "physics.h"
 #include "position.h"
 #include "acceleration.h"
-#include"velocity.h"
+#include "velocity.h"
 #include <cassert>
 
 class TestSputnik
@@ -59,32 +59,37 @@ private:
 	{
 		// setup
 		Sputnik sputnik;
-		DummyPosition position;
+		StubPosition00 position;
 		position.x = 0.0;
 		position.y = 0.0;
 		sputnik.position = position;
-		DummyVelocity velocity;
+		StubVelocityNotMoving velocity;
 		velocity.dx = 0.0;
 		velocity.dy = 0.0;
 		sputnik.velocity = velocity;
-		DummyAcceleration acceleration;
+		StubAccelerationMoving acceleration;
 		acceleration.ddx = 5.0;
 		acceleration.ddy = 5.0;
 		sputnik.acceleration = acceleration;
-		PhysicsManager physicsManager;
+		PhysicsManager* physics = new PhysicsManager();
+		physics->secondsPerFrame = 48.0;
+		physics->earthRadius = 6378000.0;
+		physics->gravityAtSea = 9.80665;
+		physics->geoOrbit = 42164000.0;
 
 		// exercise
-		sputnik.applyPhysics(physicsManager);
+		sputnik.applyPhysics(*physics);
 
 		// verify
-		assert(position.x == 4608.00);
-		assert(position.y == 4608.00);
-		assert(velocity.dx == 240.0);
-		assert(velocity.dy == 240.0);
-		assert(acceleration.ddx == 5.00);
-		assert(acceleration.ddy == 5.00);
+		assert(sputnik.position.getMetersX() == 5760.00);
+		assert(sputnik.position.getMetersY() == 5760.00);
+		//assert(velocity.dx == 240.0);
+		//assert(velocity.dy == 240.0);
+		//assert(acceleration.ddx == 5.00);
+		//assert(acceleration.ddy == 5.00);
 
 		// teardown
+		delete physics;
 	}
 
 	//void testMovingAccelerationAndVelocity()

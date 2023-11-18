@@ -30,3 +30,11 @@ public:
 	virtual void setDy(double dy) { assert(false); }
 };
 
+class StubAccelerationMoving : public DummyAcceleration
+{
+public:
+	friend class TestPhysicsManager;
+	double getDdx() const override { return 5.0; }
+	double getDdy() const override { return 5.0; }
+};
+

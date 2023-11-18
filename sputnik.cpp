@@ -1,13 +1,25 @@
 #include "sputnik.h"
+#include <iostream>
+using namespace std;
 
-
-double Sputnik::applyPhysics(PhysicsManager physicsManager)
+void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 {
-	velocity.dx = physicsManager.calculateVelocity(velocity.dx, acceleration.ddx);
-	position.x = physicsManager.calculateDistance(position.x, velocity.dx, acceleration.ddx);
+	cout << "position: " << position << endl;
+	cout << "velocity: " << velocity.getDx() << endl;
+	cout << "velocity: " << velocity.getDy() << endl;
+	cout << "acceleration: " << acceleration.getDdx() << endl;
+	cout << "acceleration: " << acceleration.getDdy() << endl;
+	position.setMetersX(physicsManager.calculateDistance(position.getMetersX(), velocity.getDx(), acceleration.getDdx()));
+	position.setMetersY(physicsManager.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
 
-	velocity.dy = physicsManager.calculateVelocity(velocity.dy, acceleration.ddy);
-	position.y = physicsManager.calculateDistance(position.y, velocity.dy, acceleration.ddy);
+	velocity.setDx(physicsManager.calculateVelocity(velocity.getDx(), acceleration.getDdx()));
+	velocity.setDy(physicsManager.calculateVelocity(velocity.getDy(), acceleration.getDdy()));
+	
+	cout << "position: " << position << endl;
+	cout << "velocity: " << velocity.getDx() << endl;
+	cout << "velocity: " << velocity.getDy() << endl;
+	cout << "acceleration: " << acceleration.getDdx() << endl;
+	cout << "acceleration: " << acceleration.getDdy() << endl;
 }
 
 

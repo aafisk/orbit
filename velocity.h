@@ -6,12 +6,12 @@ class Velocity
 {
 public:
 	Velocity() : dx(0.0), dy(0.0) {}
-	Velocity(double ddx, double ddy);
+	Velocity(double ddx, double ddy) {};
 
-	double getDdx() const { return dx; }
-	double getDdy() const { return dy; }
-	void setDdx(double setDx) { dx = setDx; }
-	void setDdy(double setDy) { dy = setDy; }
+	double getDx() const { return dx; }
+	double getDy() const { return dy; }
+	void setDx(double setDx) { dx = setDx; }
+	void setDy(double setDy) { dy = setDy; }
 
 protected:
 	double dx;

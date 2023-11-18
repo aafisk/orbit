@@ -7,7 +7,7 @@ class Sputnik
 {
 public:
 	friend class TestSputnik;
-	double applyPhysics(PhysicsManager);
+	void applyPhysics(PhysicsManager &physics);
 
 	bool setToDead(bool isAlive);
 

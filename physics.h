@@ -8,6 +8,7 @@ class PhysicsManager
 {
 public:
 	friend class TestPhysicsManager;
+	friend class TestSputnik;
 	PhysicsManager() {};									
 	double calculateVerticalComponent(double gravity, double angle);
 	double calculateHorizontalComponent(double gravity, double angle);
