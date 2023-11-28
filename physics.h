@@ -10,8 +10,8 @@ public:
 	friend class TestPhysicsManager;
 	friend class TestSputnik;
 	PhysicsManager() {};									
-	double calculateVerticalComponent(double gravity, double angle);
-	double calculateHorizontalComponent(double gravity, double angle);
+	double calculateHorizontalComponent(double inputValue, double angle);
+	double calculateVerticalComponent(double inputValue, double angle);
 	double calculateDistance(double position, double velocity, double acceleration);
 	double calculateVelocity(double velocity, double acceleration);
 	double calculateGravity(double heightAboveSurface);

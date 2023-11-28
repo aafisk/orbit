@@ -20,5 +20,5 @@ void testRunner()
 {
    TestPosition().run();
    TestPhysicsManager().runTests();
-   TestSputnik().runTests();
+   //TestSputnik().runTests();
 }

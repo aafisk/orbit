@@ -1,15 +1,14 @@
 #include "physics.h"
-#include <iostream>
-using namespace std;
 
-double PhysicsManager::calculateVerticalComponent(double gravity, double angle)
+
+double PhysicsManager::calculateHorizontalComponent(double inputValue, double angle)
 {
-	return 0.0;
+	return inputValue * sin(angle);
 }
 
-double PhysicsManager::calculateHorizontalComponent(double gravity, double angle)
+double PhysicsManager::calculateVerticalComponent(double inputValue, double angle)
 {
-	return 0.0;
+	return inputValue * cos(angle);
 }
 
 double PhysicsManager::calculateDistance(double position, double velocity, double acceleration)

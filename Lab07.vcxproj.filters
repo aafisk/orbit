@@ -83,10 +83,10 @@
     <ClInclude Include="testPhysicsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="testSputnik.h">
+    <ClInclude Include="sputnik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sputnik.h">
+    <ClInclude Include="testSputnik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,7 +2,7 @@
 #include "physics.h"
 #include "position.h"
 #include "acceleration.h"
-#include"velocity.h"
+#include "velocity.h"
 class Sputnik
 {
 public:
@@ -15,4 +15,5 @@ private:
 	Velocity velocity;
 	Position position;
 	Acceleration acceleration;
+	double angle;
 };
