@@ -15,6 +15,7 @@ public:
 		velocity = Velocity();
 		acceleration = Acceleration();
 		angle = 0.0;
+		type = "none";
 		isAlive = true;
 	}
 	Position getPosition() const { return position; }
