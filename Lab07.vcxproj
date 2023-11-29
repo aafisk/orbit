@@ -141,10 +141,9 @@
   <ItemGroup>
     <ClCompile Include="acceleration.cpp" />
     <ClCompile Include="Lab07.cpp" />
-    <ClCompile Include="orbiter.cpp" />
+    <ClCompile Include="satelite.cpp" />
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="position.cpp" />
-    <ClCompile Include="satelite.cpp" />
     <ClCompile Include="sputnik.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="uiDraw.cpp" />
@@ -153,10 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="acceleration.h" />
-    <ClInclude Include="orbiter.h" />
+    <ClInclude Include="satelite.h" />
     <ClInclude Include="physics.h" />
     <ClInclude Include="position.h" />
-    <ClInclude Include="satelite.h" />
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testPhysicsManager.h" />
