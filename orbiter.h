@@ -24,7 +24,7 @@ public:
 	bool getIsAlive() const { return isAlive; }
 	void setToDead() { isAlive = false; }
 	virtual void applyPhysics(const PhysicsManager& physics) = 0;
-	virtual void draw(const ogstream& gout) = 0;
+	virtual void draw(const ogstream& gout) const = 0;
 
 private:
 	Position position;
