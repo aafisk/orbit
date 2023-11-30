@@ -9,7 +9,7 @@ class PhysicsManager
 public:
 	friend class TestPhysicsManager;
 	friend class TestSputnik;
-	PhysicsManager() {};									
+	PhysicsManager();
 	double calculateHorizontalComponent(double inputValue, double angle);
 	double calculateVerticalComponent(double inputValue, double angle);
 	double calculateDistance(double position, double velocity, double acceleration);

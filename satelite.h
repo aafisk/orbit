@@ -6,16 +6,17 @@
 #include "physics.h"
 #include "uiDraw.h"
 
-class Orbiter
+class Satelite
 {
 public:
-	Orbiter()
+	Satelite()
 	{
 		position = Position();
 		velocity = Velocity();
 		acceleration = Acceleration();
 		angle = 0.0;
 		type = "none";
+		radius = 0.0;
 		isAlive = true;
 	}
 	Position getPosition() const { return position; }
@@ -34,6 +35,7 @@ private:
 	Acceleration acceleration;
 	double angle;
 	string type;
+	double radius;
 	bool isAlive;
 };
 

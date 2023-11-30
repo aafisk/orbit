@@ -1,5 +1,12 @@
 #include "physics.h"
 
+PhysicsManager::PhysicsManager()
+{
+	secondsPerFrame = 48.0;
+	earthRadius = 6378000.0;
+	gravityAtSea = 9.80665;
+	geoOrbit = 42164000.0;
+}
 
 double PhysicsManager::calculateHorizontalComponent(double inputValue, double angle)
 {
