@@ -19,6 +19,7 @@ public:
 		radius = 0.0;
 		isAlive = true;
 	}
+
 	Position getPosition() const { return position; }
 	Velocity getVelocity() const { return velocity; }
 	Acceleration getAcceleration() const { return acceleration; }

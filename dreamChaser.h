@@ -12,9 +12,12 @@ public:
 	void applyPhysics(PhysicsManager& physics) override;
 	void rotateClockwise();
 	void rotateCounterClock();
+	void activateThrust();
+	void deactivateThrust();
 	void fire();
 
 private:
 	bool thrust;
+	double thrustPower;
 };
 

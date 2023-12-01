@@ -13,6 +13,7 @@ DreamChaser::DreamChaser()
 	radius = 400.0;
 	isAlive = true;
 	thrust = false;
+	thrustPower = 2.0;
 }
 
 DreamChaser::DreamChaser(Position pos)
@@ -25,6 +26,7 @@ DreamChaser::DreamChaser(Position pos)
 	radius = 400.0;
 	isAlive = true;
 	thrust = false;
+	thrustPower = 2.0;
 }
 
 void DreamChaser::draw(ogstream& gout) const
@@ -42,8 +44,17 @@ void DreamChaser::applyPhysics(PhysicsManager& physics)
 	double gravity = physics.calculateGravity(height);
 	double direction = physics.calculateGravityDirection(position);
 
-	acceleration.setDdx(physics.calculateHorizontalComponent(gravity, direction));
-	acceleration.setDdy(physics.calculateVerticalComponent(gravity, direction));
+	double thrustDdx = 0.0;
+	double thrustDdy = 0.0;
+
+	if (thrust)
+	{
+		thrustDdx = physics.calculateHorizontalComponent(thrustPower, angle);
+		thrustDdy = physics.calculateVerticalComponent(thrustPower, angle);
+	}
+
+	acceleration.setDdx(physics.calculateHorizontalComponent(gravity, direction) + thrustDdx);
+	acceleration.setDdy(physics.calculateVerticalComponent(gravity, direction) + thrustDdy);
 
 	velocity.setDx(physics.calculateVelocity(velocity.getDx(), acceleration.getDdx()));
 	velocity.setDy(physics.calculateVelocity(velocity.getDy(), acceleration.getDdy()));
@@ -66,7 +77,17 @@ void DreamChaser::rotateCounterClock()
 {
 	angle -= 0.1;
 	normalize(angle);
-	std::cout << "Angle: " << angle << std::endl;
+	//std::cout << "Angle: " << angle << std::endl;
+}
+
+void DreamChaser::activateThrust()
+{
+	thrust = true;
+}
+
+void DreamChaser::deactivateThrust()
+{
+	thrust = false;
 }
 
 void DreamChaser::fire()

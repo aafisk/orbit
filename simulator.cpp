@@ -11,9 +11,10 @@ void Simulator::update()
 void Simulator::input(const Interface& pUI)
 {
 	if (pUI.isUp())
-	{
-		//ship.applyThrust();
-	}
+		ship.activateThrust();
+	else
+		ship.deactivateThrust();
+
 	if (pUI.isLeft())
 		ship.rotateCounterClock();
 	if (pUI.isRight())
