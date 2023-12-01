@@ -243,15 +243,16 @@ double Position::metersFromPixels = 40.0;
 
 #include "uiDraw.h"
 #include "earth.h"
+#include "simulator.h"
    
 ogstream gout;
 Earth earth;
 
 void callBack(const Interface* pUI, void* p)
 {
-   Demo* pDemo = (Demo*)p;
+   Simulator* sim = (Simulator*)p;
 
-   earth.draw(gout);
+   sim->update();
 }
 
 
@@ -279,10 +280,13 @@ int main(int argc, char** argv)
       ptUpperRight);
 
    // Initialize the demo
-   Demo demo(ptUpperRight);
+   //Demo demo(ptUpperRight);
+
+   // Initialize the simulator
+   Simulator sim;
 
    // set everything into action
-   ui.run(callBack, &demo);
+   ui.run(callBack, &sim);
 
 
    return 0;

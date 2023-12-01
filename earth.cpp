@@ -8,13 +8,13 @@ Earth::Earth()
 
 double Earth::getAngle() const
 {
-	return radius;
+	return angle;
 }
 
 double Earth::getRotationSpeed() const
 {
-	double part1 = -((2 * M_PI) / 30);
-	double part2 = 1440 / 86400;
+	double part1 = -((2.0 * M_PI) / 30.0);
+	double part2 = 1440.0 / 86400.0;
 	return part1 * part2;
 }
 
