@@ -34,16 +34,16 @@ void DreamChaser::draw(ogstream& gout) const
 
 void DreamChaser::applyPhysics(PhysicsManager& physics)
 {
-	std::cout << "Position: " << position.getMetersX() << " - " << position.getMetersY() << std::endl;
-	std::cout << "Velocity: " << velocity.getDx() << " - " << velocity.getDy() << std::endl;
-	std::cout << "Acceleration: " << acceleration.getDdx() << " - " << acceleration.getDdy() << std::endl;
+	//std::cout << "Position: " << position.getMetersX() << " - " << position.getMetersY() << std::endl;
+	//std::cout << "Velocity: " << velocity.getDx() << " - " << velocity.getDy() << std::endl;
+	//std::cout << "Acceleration: " << acceleration.getDdx() << " - " << acceleration.getDdy() << std::endl;
 
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
-	angle = physics.calculateGravityDirection(position);
+	double direction = physics.calculateGravityDirection(position);
 
-	acceleration.setDdx(physics.calculateHorizontalComponent(gravity, angle));
-	acceleration.setDdy(physics.calculateVerticalComponent(gravity, angle));
+	acceleration.setDdx(physics.calculateHorizontalComponent(gravity, direction));
+	acceleration.setDdy(physics.calculateVerticalComponent(gravity, direction));
 
 	velocity.setDx(physics.calculateVelocity(velocity.getDx(), acceleration.getDdx()));
 	velocity.setDy(physics.calculateVelocity(velocity.getDy(), acceleration.getDdy()));
@@ -54,6 +54,19 @@ void DreamChaser::applyPhysics(PhysicsManager& physics)
 	//std::cout << "Position: " << position.getMetersX() << " - " << position.getMetersY() << std::endl;
 	//std::cout << "Velocity: " << velocity.getDx() << " - " << velocity.getDy() << std::endl;
 	//std::cout << "Acceleration: " << acceleration.getDdx() << " - " << acceleration.getDdy() << std::endl;
+}
+
+void DreamChaser::rotateClockwise()
+{
+	angle += 0.1;
+	normalize(angle);
+}
+
+void DreamChaser::rotateCounterClock()
+{
+	angle -= 0.1;
+	normalize(angle);
+	std::cout << "Angle: " << angle << std::endl;
 }
 
 void DreamChaser::fire()

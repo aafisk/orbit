@@ -252,6 +252,7 @@ void callBack(const Interface* pUI, void* p)
 {
    Simulator* sim = (Simulator*)p;
 
+   sim->input(*pUI);
    sim->update();
 }
 
@@ -276,7 +277,7 @@ int main(int argc, char** argv)
    ptUpperRight.setPixelsX(1000.0);
    ptUpperRight.setPixelsY(1000.0);
    Interface ui(0, NULL,
-      "Demo",   /* name on the window */
+      "Orbit Simulator",   /* name on the window */
       ptUpperRight);
 
    // Initialize the demo

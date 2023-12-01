@@ -12,7 +12,7 @@ class Simulator
 public:
 	Simulator() {}
 	void update();
-	void input(Interface& pUI) const;
+	void input(const Interface& pUI);
 	void checkCollisions();
 	void drawObjects(ogstream& gout);
 	void advanceSatelites(PhysicsManager& physics);

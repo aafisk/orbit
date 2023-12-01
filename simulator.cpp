@@ -8,9 +8,18 @@ void Simulator::update()
 	drawObjects(gout);
 }
 
-void Simulator::input(Interface& pUI) const
+void Simulator::input(const Interface& pUI)
 {
-
+	if (pUI.isUp())
+	{
+		//ship.applyThrust();
+	}
+	if (pUI.isLeft())
+		ship.rotateCounterClock();
+	if (pUI.isRight())
+		ship.rotateClockwise();
+	if (pUI.isSpace())
+		ship.fire();
 }
 
 void Simulator::checkCollisions()
