@@ -26,10 +26,10 @@ public:
 	string getType() { return type; }
 	bool getIsAlive() const { return isAlive; }
 	void setToDead() { isAlive = false; }
-	virtual void applyPhysics(const PhysicsManager& physics) = 0;
-	virtual void draw(const ogstream& gout) const = 0;
+	virtual void applyPhysics(PhysicsManager& physics) = 0;
+	virtual void draw(ogstream& gout) const = 0;
 
-private:
+protected:
 	Position position;
 	Velocity velocity;
 	Acceleration acceleration;

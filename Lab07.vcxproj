@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="acceleration.cpp" />
+    <ClCompile Include="dreamChaser.cpp" />
     <ClCompile Include="earth.cpp" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="satelite.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="acceleration.h" />
+    <ClInclude Include="dreamChaser.h" />
     <ClInclude Include="earth.h" />
     <ClInclude Include="satelite.h" />
     <ClInclude Include="physics.h" />

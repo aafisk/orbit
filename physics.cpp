@@ -42,7 +42,8 @@ double PhysicsManager::calculateHeightAboveSurface(Position position)
 {
 	double x = position.getMetersX();
 	double y = position.getMetersY();
-	double result = sqrt((x * x) + (y * y)) - earthRadius;
+	double result = sqrt((x * x) + (y * y));
+	result -= earthRadius;
 	return result;
 }
 

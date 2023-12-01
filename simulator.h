@@ -5,6 +5,7 @@
 #include "satelite.h"
 #include "uiInteract.h"
 #include "uiDraw.h"
+#include "dreamChaser.h"
 
 class Simulator
 {
@@ -22,6 +23,7 @@ private:
 	//Star stars[100];
 	Earth earth;
 	ogstream gout;
+	DreamChaser ship = DreamChaser(Position(-57600000, 57600000));
 	//Satelite Satelites;
 
 	void populateStars();

@@ -6,7 +6,7 @@ class Velocity
 {
 public:
 	Velocity() : dx(0.0), dy(0.0) {}
-	Velocity(double ddx, double ddy) {};
+	Velocity(double dx, double dy) { this->dx = dx; this->dy = dy; }
 
 	double getDx() const { return dx; }
 	double getDy() const { return dy; }

@@ -11,6 +11,11 @@ double Earth::getAngle() const
 	return angle;
 }
 
+double Earth::gerRadius() const
+{
+	return radius;
+}
+
 double Earth::getRotationSpeed() const
 {
 	double part1 = -((2.0 * M_PI) / 30.0);
@@ -22,5 +27,5 @@ void Earth::draw(ogstream& gout)
 {
 	gout.drawEarth(Position(0.0, 0.0), angle);
 	angle += getRotationSpeed();
-	std::cout << "angle: " << angle << std::endl;
+	//std::cout << "angle: " << angle << std::endl;
 }

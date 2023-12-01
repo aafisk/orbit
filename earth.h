@@ -12,6 +12,7 @@ public:
 	Earth();
 
 	double getAngle() const;
+	double gerRadius() const;
 	double getRotationSpeed() const;
 	void draw(ogstream& gout);
 

@@ -6,7 +6,7 @@ class Acceleration
 {
 public:
 	Acceleration() : ddx(0.0), ddy(0.0) {}
-	Acceleration(double ddx, double ddy);
+	Acceleration(double ddx, double ddy) { this->ddx = ddx; this->ddy = ddy; }
 
 	double getDdx() const { return ddx; }
 	double getDdy() const { return ddy; }
