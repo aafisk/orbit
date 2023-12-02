@@ -2,9 +2,11 @@
 
 Star::Star()
 {
-	double x = random(-2560000.0, 2560000.0);
-	double y = random(-2560000.0, 2560000.0);
-	position = Position(x, y);
+	double x = random(-500.0, 500.0);
+	double y = random(-500.0, 500.0);
+	//position.setPixelsX(x);
+	//position.setPixelsY(y);
+	position = Position(x, y, true);
 	phase = random(0, 250);
 	brighten = true;
 }

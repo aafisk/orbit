@@ -44,4 +44,11 @@ void Bullet::applyPhysics(PhysicsManager& physics)
 		velocity.getDx(), acceleration.getDdx()));
 	position.setMetersY(physics.calculateDistance(position.getMetersY(), 
 		velocity.getDy(), acceleration.getDdy()));
+
+	timeAlive++;
+
+	if (timeAlive >= 70)
+	{
+		setToDead();
+	}
 }

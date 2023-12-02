@@ -28,6 +28,7 @@ private:
 	ogstream gout;
 	DreamChaser ship = DreamChaser(Position(-57600000, 57600000));
 	std::vector<Satelite*> satelites;
+	std::vector<int> deadSateliteIndexes;
 
 	void populateStars();
 };

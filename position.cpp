@@ -18,6 +18,16 @@ Position::Position(double x, double y) : x(0.0), y(0.0)
 }
 
 /******************************************
+* Similar to the other constructor that takes
+* an x and y value except this one sets pixels
+*******************************************/
+Position::Position(double x, double y, bool pixels)
+{
+   setPixelsX(x);
+   setPixelsY(y);
+}
+
+/******************************************
  * POINT : ASSIGNMENT
  * Assign a point
  *****************************************/

@@ -3,9 +3,9 @@
 
 DreamChaser::DreamChaser()
 {
-	position = Position();
-	position.setPixelsX(-450);
-	position.setPixelsY(450);
+	position = Position(-450, 450, true);
+	//position.setPixelsX(-450);
+	//position.setPixelsY(450);
 	velocity = Velocity(0.0, -2000.0);
 	acceleration = Acceleration(0.0, 0.0);
 	angle = 0.0;

@@ -48,10 +48,34 @@ void Simulator::drawObjects(ogstream& gout)
 void Simulator::advanceSatelites(PhysicsManager& physics)
 {
 	ship.applyPhysics(physics);
-	for (auto it = satelites.begin(); it != satelites.end(); it++)
+
+	for (int i = 0; i < satelites.size(); i++)
 	{
-		(*(*it)).applyPhysics(physics);
+		satelites[i]->applyPhysics(physics);
+
+		// Mark dead satelites and bullets for removal
+		if (!satelites[i]->getIsAlive())
+			deadSateliteIndexes.push_back(i);
 	}
+
+	// Remove dead satelites and bullets from the vector
+	if (deadSateliteIndexes.size() > 0)
+	{
+		for (int i = 0; i < deadSateliteIndexes.size(); i++)
+		{
+			satelites.erase(satelites.begin() + deadSateliteIndexes[i]);
+		}
+		deadSateliteIndexes.clear();
+	}
+
+	//for (auto it = satelites.begin(); it != satelites.end(); it++)
+	//{
+	//	(*(*it)).applyPhysics(physics);
+	//	if (!(*(*it)).getIsAlive())
+	//	{
+	//		deadSateliteIndexes.push_back()
+	//	}
+	//}
 }
 
 void Simulator::populateSim()
