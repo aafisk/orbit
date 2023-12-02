@@ -28,6 +28,7 @@ public:
 	double getRadius() { return radius; }
 	bool getIsAlive() const { return isAlive; }
 	void setToDead() { isAlive = false; }
+	//vector<Satelite*> setToDead() { isAlive = false; return vector<Satelite*>(); }
 	virtual void applyPhysics(PhysicsManager& physics) = 0;
 	virtual void draw(ogstream& gout) const = 0;
 
