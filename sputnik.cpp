@@ -11,9 +11,9 @@ Sputnik::Sputnik()
 	acceleration = Acceleration(0.0, 0.0);
 	angle = 0.0;
 	type = "sputnik";
-	radius = 400.0;
+	radius = 512000.0;
 	isAlive = true;
-	rotationSpeed = (0.01);
+	rotationSpeed = (0.2);
 }
 
 Sputnik::Sputnik(Position pos)
@@ -23,9 +23,9 @@ Sputnik::Sputnik(Position pos)
 	acceleration = Acceleration(0.0, 0.0);
 	angle = 0.0;
 	type = "sputnik";
-	radius = 200.0;
+	radius = 512000.0;
 	isAlive = true;
-	rotationSpeed = (0.05);
+	rotationSpeed = (0.2);
 }
 
 void Sputnik::applyPhysics(PhysicsManager &physicsManager)

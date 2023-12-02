@@ -151,6 +151,7 @@
     <ClCompile Include="simulator.cpp" />
     <ClCompile Include="sputnik.cpp" />
     <ClCompile Include="star.cpp" />
+    <ClCompile Include="starLink.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="uiDraw.cpp" />
     <ClCompile Include="uiInteract.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="simulator.h" />
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="star.h" />
+    <ClInclude Include="starLink.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testPhysicsManager.h" />
     <ClInclude Include="testPosition.h" />

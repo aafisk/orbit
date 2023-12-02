@@ -1,18 +1,17 @@
 #pragma once
-#include "physics.h"
-#include "uiDraw.h"
+
 #include "satelite.h"
 
-class GPS : public Satelite
+class StarLink : public Satelite
 {
 public:
-	GPS();
-	GPS(Position pos, Velocity vel);
+	StarLink();
+	StarLink(Position pos, Velocity vel);
 	void applyPhysics(PhysicsManager& physics) override;
 	void draw(ogstream& gout) const override;
 	bool setToDead(bool isAlive);
 
 private:
-	
+
 };
 

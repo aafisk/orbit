@@ -1,26 +1,26 @@
-#include "gps.h"
-using namespace std;
+#include "starLink.h"
 
-GPS::GPS()
+StarLink::StarLink()
 {
-	angle = 0.0;
-	type = "gps";
-	radius = 400.0;
+	angle = 1.5708;
+	type = "StarLink";
+	radius = 768000.0;
 	isAlive = true;
+	rotationSpeed = -0.01;
 }
 
-GPS::GPS(Position pos, Velocity vel)
+StarLink::StarLink(Position pos, Velocity vel)
 {
 	position = pos;
 	velocity = vel;
-	angle = 0.0;
-	type = "gps";
-	radius = 200.0;
+	angle = 1.5708;
+	type = "StarLink";
+	radius = 768000.0;
 	isAlive = true;
-	rotationSpeed = -0.008;
+	rotationSpeed = -0.01;
 }
 
-void GPS::applyPhysics(PhysicsManager& physics)
+void StarLink::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -38,13 +38,13 @@ void GPS::applyPhysics(PhysicsManager& physics)
 	angle += rotationSpeed;
 }
 
-void GPS::draw(ogstream& gout) const
+void StarLink::draw(ogstream& gout) const
 {
-	gout.drawGPS(position, angle);
+	gout.drawStarlink(position, angle);
 }
 
 
-bool GPS::setToDead(bool isAlive)
+bool StarLink::setToDead(bool isAlive)
 {
 	return false;
 }

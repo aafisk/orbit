@@ -6,6 +6,7 @@
 #include "uiInteract.h"
 #include "uiDraw.h"
 #include "dreamChaser.h"
+#include "starLink.h"
 #include "sputnik.h"
 #include "gps.h"
 #include "star.h"
@@ -36,6 +37,7 @@ private:
 	GPS gps4 = GPS(Position(0.0, -26560000.0), Velocity(3880.0, 0.0));
 	GPS gps5 = GPS(Position(-23001634.72, -13280000.0), Velocity(1940.00, -3360.18));
 	GPS gps6 = GPS(Position(-23001634.72, 13280000.0), Velocity(-1940.00, -3360.18));
+	StarLink starLink = StarLink(Position(0.0, -13020000.0), Velocity(5800.0, 0.0));
 	std::vector<Satelite*> satelites;
 	std::vector<int> deadSateliteIndexes;
 
