@@ -75,6 +75,9 @@
     <ClCompile Include="gpsPart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="hubblePart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
@@ -144,6 +147,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gpsPart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hubblePart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

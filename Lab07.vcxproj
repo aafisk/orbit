@@ -146,6 +146,7 @@
     <ClCompile Include="gps.cpp" />
     <ClCompile Include="gpsPart.cpp" />
     <ClCompile Include="hubble.cpp" />
+    <ClCompile Include="hubblePart.cpp" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="dragon.cpp" />
     <ClCompile Include="satelite.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="gpsPart.h" />
     <ClInclude Include="hubble.h" />
     <ClInclude Include="dragon.h" />
+    <ClInclude Include="hubblePart.h" />
     <ClInclude Include="satelite.h" />
     <ClInclude Include="physics.h" />
     <ClInclude Include="position.h" />
