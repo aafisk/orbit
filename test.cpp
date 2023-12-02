@@ -9,7 +9,6 @@
 
 #include "test.h"
 #include "testPosition.h"
-#include "testSputnik.h"
 #include "testPhysicsManager.h"
 
 /*****************************************************************

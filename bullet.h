@@ -10,6 +10,7 @@ public:
 
 	void applyPhysics(PhysicsManager& physics) override;
 	void draw(ogstream& gout) const override;
+	std::vector<Satelite*> setToDead() override { isAlive = false; return std::vector<Satelite*>(); }
 
 private:
 	int timeAlive;

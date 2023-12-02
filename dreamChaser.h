@@ -11,6 +11,7 @@ public:
 	DreamChaser(Position pos);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	std::vector<Satelite*> setToDead() override { isAlive = false; return std::vector<Satelite*>(); }
 	void rotateClockwise();
 	void rotateCounterClock();
 	void activateThrust();

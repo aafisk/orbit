@@ -32,11 +32,13 @@ void Simulator::checkCollisions()
 			Position pt1 = satelites[i]->getPosition();
 			Position pt2 = satelites[j]->getPosition();
 			double distance = physics.calculateDiatanceBetweenPoints(pt1, pt2);
-			
+
 			if (distance - satelites[i]->getRadius() - satelites[j]->getRadius() <= 0.0)
 			{
-				satelites[i]->setToDead();
-				satelites[j]->setToDead();
+  				std::vector<Satelite*> frags1 = satelites[i]->setToDead();
+				std::vector<Satelite*> frags2 = satelites[j]->setToDead();
+				//satelites.insert(satelites.end(), frags1.begin(), frags1.end());
+				//satelites.insert(satelites.end(), frags2.begin(), frags2.end());
 			}
 		}
 	}

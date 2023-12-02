@@ -143,6 +143,7 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="dreamChaser.cpp" />
     <ClCompile Include="earth.cpp" />
+    <ClCompile Include="fragment.cpp" />
     <ClCompile Include="gps.cpp" />
     <ClCompile Include="hubble.cpp" />
     <ClCompile Include="Lab07.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="dreamChaser.h" />
     <ClInclude Include="earth.h" />
+    <ClInclude Include="fragment.h" />
     <ClInclude Include="gps.h" />
     <ClInclude Include="hubble.h" />
     <ClInclude Include="dragon.h" />
@@ -177,7 +179,6 @@
     <ClInclude Include="test.h" />
     <ClInclude Include="testPhysicsManager.h" />
     <ClInclude Include="testPosition.h" />
-    <ClInclude Include="testSputnik.h" />
     <ClInclude Include="uiDraw.h" />
     <ClInclude Include="uiInteract.h" />
     <ClInclude Include="velocity.h" />

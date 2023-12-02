@@ -5,6 +5,7 @@
 #include "acceleration.h"
 #include "physics.h"
 #include "uiDraw.h"
+#include <vector>
 
 class Satelite
 {
@@ -27,8 +28,8 @@ public:
 	string getType() { return type; }
 	double getRadius() { return radius; }
 	bool getIsAlive() const { return isAlive; }
-	void setToDead() { isAlive = false; }
-	//vector<Satelite*> setToDead() { isAlive = false; return vector<Satelite*>(); }
+	//void setToDead() { isAlive = false; }
+	virtual std::vector<Satelite*> setToDead() = 0;
 	virtual void applyPhysics(PhysicsManager& physics) = 0;
 	virtual void draw(ogstream& gout) const = 0;
 
