@@ -83,6 +83,12 @@ void Simulator::populateSim()
 	populateStars();
 	satelites.push_back(&ship);
 	satelites.push_back(&sputnik);
+	satelites.push_back(&gps1);
+	satelites.push_back(&gps2);
+	satelites.push_back(&gps3);
+	satelites.push_back(&gps4);
+	satelites.push_back(&gps5);
+	satelites.push_back(&gps6);
 }
 
 void Simulator::populateStars()
