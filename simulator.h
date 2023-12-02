@@ -6,6 +6,7 @@
 #include "uiInteract.h"
 #include "uiDraw.h"
 #include "dreamChaser.h"
+#include "star.h"
 #include <vector>
 
 class Simulator
@@ -17,12 +18,12 @@ public:
 	void checkCollisions();
 	void drawObjects(ogstream& gout);
 	void advanceSatelites(PhysicsManager& physics);
-	void populateSatelites();
+	void populateSim();
 
 private:
 	PhysicsManager physics;
 
-	//Star stars[100];
+	std::vector<Star> stars;
 	Earth earth;
 	ogstream gout;
 	DreamChaser ship = DreamChaser(Position(-57600000, 57600000));

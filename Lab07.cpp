@@ -286,6 +286,8 @@ int main(int argc, char** argv)
    // Initialize the simulator
    Simulator sim;
 
+   sim.populateSim();
+
    // set everything into action
    ui.run(callBack, &sim);
 
