@@ -90,7 +90,12 @@ void DreamChaser::deactivateThrust()
 	thrust = false;
 }
 
-void DreamChaser::fire()
+Bullet* DreamChaser::fire()
 {
+	//double startDistance = 7600.0;
+	//Position bulletStart = Position(position.getMetersX() + (760 * sin(angle)), position.getMetersY() + (760 * cos(angle)));
+	//bulletStart.setMetersX();
+	//bulletStart.setMetersY();
 
+	return new Bullet(position, velocity, angle);
 }

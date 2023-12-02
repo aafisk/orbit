@@ -1,6 +1,7 @@
 #pragma once
 
 #include "satelite.h"
+#include "bullet.h"
 #include "uiDraw.h"
 
 class DreamChaser : public Satelite
@@ -14,7 +15,7 @@ public:
 	void rotateCounterClock();
 	void activateThrust();
 	void deactivateThrust();
-	void fire();
+	Bullet* fire();
 
 private:
 	bool thrust;

@@ -8,8 +8,8 @@ public:
 	Bullet();
 	Bullet(Position& pos, Velocity& vel, double angle);
 
-	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void draw(ogstream& gout) const override;
 
 private:
 	int timeAlive;
