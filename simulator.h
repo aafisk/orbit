@@ -7,6 +7,7 @@
 #include "uiDraw.h"
 #include "dreamChaser.h"
 #include "sputnik.h"
+#include "gps.h"
 #include "star.h"
 #include <vector>
 
@@ -29,6 +30,12 @@ private:
 	ogstream gout;
 	DreamChaser ship = DreamChaser(Position(-57600000, 57600000));
 	Sputnik sputnik = Sputnik();
+	GPS gps1 = GPS(Position(0.0, 26560000.0), Velocity(-3880.0, 0.0));
+	GPS gps2 = GPS(Position(23001634.72, 13280000.0), Velocity(-1940.00, 3360.18));
+	GPS gps3 = GPS(Position(23001634.72, -13280000.0), Velocity(1940.00, 3360.18));
+	GPS gps4 = GPS(Position(0.0, -26560000.0), Velocity(3880.0, 0.0));
+	GPS gps5 = GPS(Position(-23001634.72, -13280000.0), Velocity(1940.00, -3360.18));
+	GPS gps6 = GPS(Position(-23001634.72, 13280000.0), Velocity(-1940.00, -3360.18));
 	std::vector<Satelite*> satelites;
 	std::vector<int> deadSateliteIndexes;
 
