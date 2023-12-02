@@ -6,8 +6,8 @@ using namespace std;
 
 Sputnik::Sputnik()
 {
-	position = Position(-250, 250, true);
-	velocity = Velocity(0.0, -2000.0);
+	position = Position(-36515095.13, 21082000.0);
+	velocity = Velocity(2050.0, 2684.68);
 	acceleration = Acceleration(0.0, 0.0);
 	angle = 0.0;
 	type = "sputnik";
@@ -20,7 +20,7 @@ Sputnik::Sputnik()
 Sputnik::Sputnik(Position pos)
 {
 	position = pos;
-	velocity = Velocity(0.0, -2000.0);
+	velocity = Velocity(2050.0, 2684.68);
 	acceleration = Acceleration(0.0, 0.0);
 	angle = 0.0;
 	type = "sputnik";
@@ -34,10 +34,10 @@ void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 {
 	double height = physicsManager.calculateHeightAboveSurface(position);
 	double gravity = physicsManager.calculateGravity(height);
-	angle = physicsManager.calculateGravityDirection(position);
+	double direction = physicsManager.calculateGravityDirection(position);
 
-	acceleration.setDdx(physicsManager.calculateHorizontalComponent(gravity, angle));
-	acceleration.setDdy(physicsManager.calculateVerticalComponent(gravity, angle));
+	acceleration.setDdx(physicsManager.calculateHorizontalComponent(gravity, direction));
+	acceleration.setDdy(physicsManager.calculateVerticalComponent(gravity, direction));
 
 	velocity.setDx(physicsManager.calculateVelocity(velocity.getDx(), acceleration.getDdx()));
 	velocity.setDy(physicsManager.calculateVelocity(velocity.getDy(), acceleration.getDdy()));

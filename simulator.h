@@ -28,7 +28,7 @@ private:
 	Earth earth;
 	ogstream gout;
 	DreamChaser ship = DreamChaser(Position(-57600000, 57600000));
-	Sputnik sputnik = Sputnik(Position(-20000000, 20000000));
+	Sputnik sputnik = Sputnik();
 	std::vector<Satelite*> satelites;
 	std::vector<int> deadSateliteIndexes;
 
