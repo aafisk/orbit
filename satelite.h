@@ -25,6 +25,7 @@ public:
 	Acceleration getAcceleration() const { return acceleration; }
 	double getAngle() { normalize(angle); return angle; }
 	string getType() { return type; }
+	double getRadius() { return radius; }
 	bool getIsAlive() const { return isAlive; }
 	void setToDead() { isAlive = false; }
 	virtual void applyPhysics(PhysicsManager& physics) = 0;

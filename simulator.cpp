@@ -25,7 +25,21 @@ void Simulator::input(const Interface& pUI)
 
 void Simulator::checkCollisions()
 {
-
+	for (int i = 0; i < satelites.size(); i++)
+	{
+		for (int j = i + 1; j < satelites.size(); j++)
+		{
+			Position pt1 = satelites[i]->getPosition();
+			Position pt2 = satelites[j]->getPosition();
+			double distance = physics.calculateDiatanceBetweenPoints(pt1, pt2);
+			
+			if (distance - satelites[i]->getRadius() - satelites[j]->getRadius() <= 0.0)
+			{
+				satelites[i]->setToDead();
+				satelites[j]->setToDead();
+			}
+		}
+	}
 }
 
 void Simulator::drawObjects(ogstream& gout)
@@ -63,19 +77,13 @@ void Simulator::advanceSatelites(PhysicsManager& physics)
 	{
 		for (int i = 0; i < deadSateliteIndexes.size(); i++)
 		{
+			if (satelites[deadSateliteIndexes[i]]->getType() == "Bullet")
+  				delete satelites[deadSateliteIndexes[i]];
 			satelites.erase(satelites.begin() + deadSateliteIndexes[i]);
 		}
 		deadSateliteIndexes.clear();
 	}
 
-	//for (auto it = satelites.begin(); it != satelites.end(); it++)
-	//{
-	//	(*(*it)).applyPhysics(physics);
-	//	if (!(*(*it)).getIsAlive())
-	//	{
-	//		deadSateliteIndexes.push_back()
-	//	}
-	//}
 }
 
 void Simulator::populateSim()

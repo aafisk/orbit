@@ -254,6 +254,7 @@ void callBack(const Interface* pUI, void* p)
 
    sim->input(*pUI);
    sim->update();
+   sim->checkCollisions();
 }
 
 

@@ -5,7 +5,7 @@ GPS::GPS()
 {
 	angle = 0.0;
 	type = "gps";
-	radius = 400.0;
+	radius = 1536000.0;
 	isAlive = true;
 }
 
@@ -15,7 +15,7 @@ GPS::GPS(Position pos, Velocity vel)
 	velocity = vel;
 	angle = 0.0;
 	type = "gps";
-	radius = 200.0;
+	radius = 1536000.0;
 	isAlive = true;
 	rotationSpeed = -0.008;
 }

@@ -12,8 +12,8 @@ Bullet::Bullet(Position& pos, Velocity& vel, double startAngle)
 
 	acceleration = Acceleration();
 	angle = startAngle;
-	type = "none";
-	radius = 20.0;
+	type = "Bullet";
+	radius = 64000.0;
 	timeAlive = 0;
 	isAlive = true;
 
