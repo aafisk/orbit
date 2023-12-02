@@ -38,6 +38,7 @@ protected:
 	string type;
 	double radius;
 	bool isAlive;
+	double rotationSpeed;
 
 	void normalize(double radians);
 };

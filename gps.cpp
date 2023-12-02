@@ -10,8 +10,6 @@ GPS::GPS()
 	type = "gps";
 	radius = 400.0;
 	isAlive = true;
-	thrust = false;
-	thrustPower = 2.0;
 }
 
 GPS::GPS(Position pos, Velocity vel)
@@ -23,8 +21,7 @@ GPS::GPS(Position pos, Velocity vel)
 	type = "gps";
 	radius = 200.0;
 	isAlive = true;
-	thrust = false;
-	thrustPower = 2.0;
+	rotationSpeed = -0.008;
 }
 
 void GPS::applyPhysics(PhysicsManager& physics)
@@ -42,8 +39,7 @@ void GPS::applyPhysics(PhysicsManager& physics)
 	position.setMetersX(physics.calculateDistance(position.getMetersX(), velocity.getDx(), acceleration.getDdx()));
 	position.setMetersY(physics.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
 
-	cout << "X: " << position.getMetersX() << endl;
-	cout << "Y: " << position.getMetersY() << endl;
+	angle += rotationSpeed;
 }
 
 void GPS::draw(ogstream& gout) const

@@ -14,7 +14,4 @@ public:
 	bool setToDead(bool isAlive);
 
 private:
-	bool thrust;
-	double thrustPower;
-	double angle;
 };

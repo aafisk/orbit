@@ -13,8 +13,7 @@ Sputnik::Sputnik()
 	type = "sputnik";
 	radius = 400.0;
 	isAlive = true;
-	thrust = false;
-	thrustPower = 2.0;
+	rotationSpeed = (0.01);
 }
 
 Sputnik::Sputnik(Position pos)
@@ -26,8 +25,7 @@ Sputnik::Sputnik(Position pos)
 	type = "sputnik";
 	radius = 200.0;
 	isAlive = true;
-	thrust = false;
-	thrustPower = 2.0;
+	rotationSpeed = (0.05);
 }
 
 void Sputnik::applyPhysics(PhysicsManager &physicsManager)
@@ -44,6 +42,8 @@ void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 
 	position.setMetersX(physicsManager.calculateDistance(position.getMetersX(), velocity.getDx(), acceleration.getDdx()));
 	position.setMetersY(physicsManager.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
+
+	angle += rotationSpeed;
 }
 
 void Sputnik::draw(ogstream& gout) const 
