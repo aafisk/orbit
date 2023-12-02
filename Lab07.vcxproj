@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="acceleration.cpp" />
     <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="dragonPart.cpp" />
     <ClCompile Include="dreamChaser.cpp" />
     <ClCompile Include="earth.cpp" />
     <ClCompile Include="gps.cpp" />
@@ -165,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="acceleration.h" />
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="dragonPart.h" />
     <ClInclude Include="dreamChaser.h" />
     <ClInclude Include="earth.h" />
     <ClInclude Include="fragment.h" />
