@@ -44,9 +44,6 @@ void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 
 	position.setMetersX(physicsManager.calculateDistance(position.getMetersX(), velocity.getDx(), acceleration.getDdx()));
 	position.setMetersY(physicsManager.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
-
-	cout << "X: " << position.getMetersX() << endl;
-	cout << "Y: " << position.getMetersY() << endl;
 }
 
 void Sputnik::draw(ogstream& gout) const 
