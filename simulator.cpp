@@ -82,6 +82,7 @@ void Simulator::populateSim()
 {
 	populateStars();
 	satelites.push_back(&ship);
+	satelites.push_back(&sputnik);
 }
 
 void Simulator::populateStars()
