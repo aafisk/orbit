@@ -1,19 +1,20 @@
 #pragma once
 #include "physics.h"
-#include "position.h"
-#include "acceleration.h"
-#include "velocity.h"
-class Sputnik
+#include "uiDraw.h"
+#include "satelite.h"
+
+class Sputnik : public Satelite
 {
 public:
 	friend class TestSputnik;
+	Sputnik();
+	Sputnik(Position pos);
 	void applyPhysics(PhysicsManager &physics);
-
+	void draw(ogstream& gout) const override;
 	bool setToDead(bool isAlive);
 
 private:
-	Velocity velocity;
-	Position position;
-	Acceleration acceleration;
+	bool thrust;
+	double thrustPower;
 	double angle;
 };

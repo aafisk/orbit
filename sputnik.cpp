@@ -4,6 +4,32 @@
 
 using namespace std;
 
+Sputnik::Sputnik()
+{
+	position = Position(-250, 250, true);
+	velocity = Velocity(0.0, -2000.0);
+	acceleration = Acceleration(0.0, 0.0);
+	angle = 0.0;
+	type = "sputnik";
+	radius = 400.0;
+	isAlive = true;
+	thrust = false;
+	thrustPower = 2.0;
+}
+
+Sputnik::Sputnik(Position pos)
+{
+	position = pos;
+	velocity = Velocity(0.0, -2000.0);
+	acceleration = Acceleration(0.0, 0.0);
+	angle = 0.0;
+	type = "sputnik";
+	radius = 200.0;
+	isAlive = true;
+	thrust = false;
+	thrustPower = 2.0;
+}
+
 void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 {
 	double height = physicsManager.calculateHeightAboveSurface(position);
@@ -21,6 +47,11 @@ void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 
 	cout << "X: " << position.getMetersX() << endl;
 	cout << "Y: " << position.getMetersY() << endl;
+}
+
+void Sputnik::draw(ogstream& gout) const 
+{
+	gout.drawSputnik(position, angle);
 }
 
 

@@ -6,6 +6,7 @@
 #include "uiInteract.h"
 #include "uiDraw.h"
 #include "dreamChaser.h"
+#include "sputnik.h"
 #include "star.h"
 #include <vector>
 
@@ -27,6 +28,7 @@ private:
 	Earth earth;
 	ogstream gout;
 	DreamChaser ship = DreamChaser(Position(-57600000, 57600000));
+	Sputnik sputnik = Sputnik(Position(-2000000, 2000000));
 	std::vector<Satelite*> satelites;
 	std::vector<int> deadSateliteIndexes;
 
