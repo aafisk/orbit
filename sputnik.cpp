@@ -44,6 +44,7 @@ void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 	position.setMetersY(physicsManager.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
 
 	angle += rotationSpeed;
+	rotationSpeed += 0.0001;
 }
 
 void Sputnik::draw(ogstream& gout) const 

@@ -8,6 +8,8 @@
 #include "dreamChaser.h"
 #include "starLink.h"
 #include "sputnik.h"
+#include "hubble.h"
+#include "dragon.h"
 #include "gps.h"
 #include "star.h"
 #include <vector>
@@ -38,6 +40,8 @@ private:
 	GPS gps5 = GPS(Position(-23001634.72, -13280000.0), Velocity(1940.00, -3360.18));
 	GPS gps6 = GPS(Position(-23001634.72, 13280000.0), Velocity(-1940.00, -3360.18));
 	StarLink starLink = StarLink(Position(0.0, -13020000.0), Velocity(5800.0, 0.0));
+	Hubble hubble = Hubble(Position(0.0, -42164000.0), Velocity(3100.0, 0.0));
+	Dragon dragon = Dragon(Position(0.0, 8000000.0), Velocity(-7900.0, 0.0));
 	std::vector<Satelite*> satelites;
 	std::vector<int> deadSateliteIndexes;
 

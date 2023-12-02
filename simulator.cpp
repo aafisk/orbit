@@ -90,6 +90,8 @@ void Simulator::populateSim()
 	satelites.push_back(&gps5);
 	satelites.push_back(&gps6);
 	satelites.push_back(&starLink);
+	satelites.push_back(&hubble);
+	satelites.push_back(&dragon);
 }
 
 void Simulator::populateStars()

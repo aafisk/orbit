@@ -144,7 +144,9 @@
     <ClCompile Include="dreamChaser.cpp" />
     <ClCompile Include="earth.cpp" />
     <ClCompile Include="gps.cpp" />
+    <ClCompile Include="hubble.cpp" />
     <ClCompile Include="Lab07.cpp" />
+    <ClCompile Include="dragon.cpp" />
     <ClCompile Include="satelite.cpp" />
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="position.cpp" />
@@ -163,6 +165,8 @@
     <ClInclude Include="dreamChaser.h" />
     <ClInclude Include="earth.h" />
     <ClInclude Include="gps.h" />
+    <ClInclude Include="hubble.h" />
+    <ClInclude Include="dragon.h" />
     <ClInclude Include="satelite.h" />
     <ClInclude Include="physics.h" />
     <ClInclude Include="position.h" />
