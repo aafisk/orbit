@@ -12,7 +12,7 @@ public:
 	Sputnik(Position pos);
 	void applyPhysics(PhysicsManager &physics) override;
 	void draw(ogstream& gout) const override;
-	std::vector<Satelite*> setToDead() override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 
 private:
 };

@@ -6,6 +6,7 @@
 #include "physics.h"
 #include "uiDraw.h"
 #include <vector>
+#include <list>
 
 class Satelite
 {
@@ -29,7 +30,7 @@ public:
 	double getRadius() { return radius; }
 	bool getIsAlive() const { return isAlive; }
 	//void setToDead() { isAlive = false; }
-	virtual std::vector<Satelite*> setToDead() = 0;
+	virtual void setToDead(std::list<Satelite*>& satelites) = 0;
 	virtual void applyPhysics(PhysicsManager& physics) = 0;
 	virtual void draw(ogstream& gout) const = 0;
 

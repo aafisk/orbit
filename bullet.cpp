@@ -49,6 +49,6 @@ void Bullet::applyPhysics(PhysicsManager& physics)
 
 	if (timeAlive >= 70)
 	{
-		setToDead();
+		isAlive = false;
 	}
 }

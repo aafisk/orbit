@@ -9,7 +9,7 @@ public:
 	Hubble(Position pos, Velocity vel);
 	void applyPhysics(PhysicsManager& physics) override;
 	void draw(ogstream& gout) const override;
-	std::vector<Satelite*> setToDead() override { isAlive = false; return std::vector<Satelite*>(); }
+	void setToDead(std::list<Satelite*>& satelites) override { isAlive = false; }
 	bool setToDead(bool isAlive);
 
 private:

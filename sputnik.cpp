@@ -53,16 +53,13 @@ void Sputnik::draw(ogstream& gout) const
 }
 
 
-std::vector<Satelite*> Sputnik::setToDead()
+void Sputnik::setToDead(std::list<Satelite*>& satelites)
 {
 	isAlive = false;
 
-	std::vector<Satelite*> fragsNParts;
 	for (int i = 0; i < 4; i++)
 	{
 		Fragment* frag = new Fragment(position, velocity);
-		fragsNParts.push_back(frag);
+		satelites.push_back(frag);
 	}
-
-	return fragsNParts;
 }

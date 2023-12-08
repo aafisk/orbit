@@ -9,7 +9,7 @@ public:
 	Fragment(Position& pos, Velocity& vel);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
-	std::vector<Satelite*> setToDead() override { isAlive = false; return std::vector<Satelite*>(); }
+	void setToDead(std::list<Satelite*>& satelites) override { isAlive = false; }
 
 private:
 	int timeAlive;

@@ -25,24 +25,79 @@ void Simulator::input(const Interface& pUI)
 
 void Simulator::checkCollisions()
 {
-	for (int i = 0; i < satelites.size(); i++)
+	for (auto itOuter = satelites.begin(); itOuter != satelites.end();)
 	{
-		for (int j = i + 1; j < satelites.size(); j++)
+		bool incrementOuter = true;
+
+		for (auto itInner = std::next(itOuter); itInner != satelites.end();)
 		{
-			Position pt1 = satelites[i]->getPosition();
-			Position pt2 = satelites[j]->getPosition();
+			Position pt1 = (*itOuter)->getPosition();
+			Position pt2 = (*itInner)->getPosition();
 			double distance = physics.calculateDiatanceBetweenPoints(pt1, pt2);
 
-			if (distance - satelites[i]->getRadius() - satelites[j]->getRadius() <= 0.0)
+			// If the combined radius of both objects is less than the distance appart 
+			// kill both satelites
+			if (distance < (*itOuter)->getRadius() + (*itInner)->getRadius())
 			{
-  				std::vector<Satelite*> frags1 = satelites[i]->setToDead();
-				std::vector<Satelite*> frags2 = satelites[j]->setToDead();
-				//satelites.insert(satelites.end(), frags1.begin(), frags1.end());
-				//satelites.insert(satelites.end(), frags2.begin(), frags2.end());
+				// Kill the colliding satelites
+           	(*itOuter)->setToDead(satelites);
+				(*itInner)->setToDead(satelites);
+				
+				// Erase the satelites that have collided and increase the iterator
+				// for both loops
+  				itOuter = satelites.erase(itOuter);
+				incrementOuter = false;
+				itInner = satelites.erase(itInner);
+			}
+
+			// increment the iterator for the inner loop if nothing collides
+			else
+			{
+				++itInner;
 			}
 		}
+
+		// Increment the iterator for the outer loop if nothing collides
+		if (incrementOuter)
+			++itOuter;
 	}
 }
+
+
+
+			//if (!(*itInner)->getIsAlive())
+			//{
+			//	if ((*itInner)->getType() == "Bullet" || (*itInner)->getType() == "Fragment")
+			//		delete(*itInner);
+			//	
+			//}
+		
+		//if (!(*itOuter)->getIsAlive())
+		//{
+		//	if ((*itOuter)->getType() == "Bullet" || (*itOuter)->getType() == "Fragment")
+		//		delete(*itOuter);
+		//	
+		//}
+		//else
+
+	//for (int i = 0; i < satelites.size(); i++)
+	//{
+	//	for (int j = i + 1; j < satelites.size(); j++)
+	//	{
+	//		Position pt1 = satelites[i]->getPosition();
+	//		Position pt2 = satelites[j]->getPosition();
+	//		double distance = physics.calculateDiatanceBetweenPoints(pt1, pt2);
+
+	//		if (distance < satelites[i]->getRadius() + satelites[j] ->getRadius())
+	//		{
+ // 				std::vector<Satelite*> frags1 = satelites[i]->setToDead();
+	//			std::vector<Satelite*> frags2 = satelites[j]->setToDead();
+	//			//satelites.insert(satelites.end(), frags1.begin(), frags1.end());
+	//			//satelites.insert(satelites.end(), frags2.begin(), frags2.end());
+	//		}
+	//	}
+	//}
+
 
 void Simulator::drawObjects(ogstream& gout)
 {
@@ -63,29 +118,34 @@ void Simulator::drawObjects(ogstream& gout)
 
 void Simulator::advanceSatelites(PhysicsManager& physics)
 {
-	ship.applyPhysics(physics);
+	// Apply physics to all satelites
 
-	for (int i = 0; i < satelites.size(); i++)
+	for (auto it = satelites.begin(); it != satelites.end(); it++)
 	{
-		satelites[i]->applyPhysics(physics);
-
-		// Mark dead satelites and bullets for removal
-		if (!satelites[i]->getIsAlive())
-			deadSateliteIndexes.push_back(i);
+		(*it)->applyPhysics(physics);
 	}
+
+	//for (int i = 0; i < satelites.size(); i++)
+	//{
+	//	satelites[i]->applyPhysics(physics);
+
+	//	// Mark dead satelites and bullets for removal
+	//	if (!satelites[i]->getIsAlive())
+	//		deadSateliteIndexes.push_back(i);
+	//}
 
 	// Remove dead satelites and bullets from the vector
-	if (deadSateliteIndexes.size() > 0)
+	for (auto it = satelites.begin(); it != satelites.end(); )
 	{
-		for (int i = 0; i < deadSateliteIndexes.size(); i++)
+		if (!(*it)->getIsAlive())
 		{
-			if (satelites[deadSateliteIndexes[i]]->getType() == "Bullet")
-  				delete satelites[deadSateliteIndexes[i]];
-			satelites.erase(satelites.begin() + deadSateliteIndexes[i]);
+			if ((*it)->getType() == "Bullet" || (*it)->getType() == "Fragment")
+				delete(*it);
+			it = satelites.erase(it);
 		}
-		deadSateliteIndexes.clear();
+		else
+			it++;
 	}
-
 }
 
 void Simulator::populateSim()

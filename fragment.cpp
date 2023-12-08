@@ -5,17 +5,18 @@ Fragment::Fragment()
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
 	isAlive = true;
+	type = "Fragment";
 	timeAlive = 0;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = random(0.01, 0.1);
 }
 
 Fragment::Fragment(Position& pos, Velocity& vel)
 {
 	angle = random(0.0, 6.2);
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 4.0 * sin(angle);
+	double y = 128000.0 * 4.0 * cos(angle);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
 	double dx = velocityAdded * sin(angle);
