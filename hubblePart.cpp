@@ -1,6 +1,6 @@
-#include "hubblePart.h"
+#include "HubblePart.h"
 
-hubblePartTelescope::hubblePartTelescope()
+HubblePartTelescope::HubblePartTelescope()
 {
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
@@ -8,29 +8,29 @@ hubblePartTelescope::hubblePartTelescope()
 	rotationSpeed = random(0.1, 5.0);
 }
 
-hubblePartTelescope::hubblePartTelescope(Position& pos, Velocity& vel)
+HubblePartTelescope::HubblePartTelescope(Position& pos, Velocity& vel, double startAngle)
 {
-	angle = random(0.0, 6.2);
+	angle = startAngle;
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 10.0 * sin(angle);
+	double y = 128000.0 * 10.0 * cos(angle);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle);
+	double dy = vel.getDy() + velocityAdded * cos(angle);
 
-	radius = 254000.0;
+	radius = 128000.0 * 10.0;
 	isAlive = true;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = -0.03;
 }
 
-void hubblePartTelescope::draw(ogstream& gout) const
+void HubblePartTelescope::draw(ogstream& gout) const
 {
 	gout.drawHubbleTelescope(position, angle);
 }
 
-void hubblePartTelescope::applyPhysics(PhysicsManager& physics)
+void HubblePartTelescope::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -48,13 +48,23 @@ void hubblePartTelescope::applyPhysics(PhysicsManager& physics)
 	angle += rotationSpeed;
 }
 
+void HubblePartTelescope::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
+}
 
 
 /******************************
- hubblePartComputer
+ HubblePartComputer
 *******************************/
 
-hubblePartComputer::hubblePartComputer()
+HubblePartComputer::HubblePartComputer()
 {
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
@@ -62,29 +72,29 @@ hubblePartComputer::hubblePartComputer()
 	rotationSpeed = random(0.1, 5.0);
 }
 
-hubblePartComputer::hubblePartComputer(Position& pos, Velocity& vel)
+HubblePartComputer::HubblePartComputer(Position& pos, Velocity& vel, double startAngle)
 {
-	angle = random(0.0, 6.2);
+	angle = startAngle;
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 7.0 * sin(angle + 3.14159);
+	double y = 128000.0 * 7.0 * cos(angle + 3.14159);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle + 3.14159);
+	double dy = vel.getDy() + velocityAdded * cos(angle + 3.14159);
 
-	radius = 254000.0;
+	radius = 128000.0 * 7.0;
 	isAlive = true;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = -0.03;
 }
 
-void hubblePartComputer::draw(ogstream& gout) const
+void HubblePartComputer::draw(ogstream& gout) const
 {
 	gout.drawHubbleComputer(position, angle);
 }
 
-void hubblePartComputer::applyPhysics(PhysicsManager& physics)
+void HubblePartComputer::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -102,12 +112,23 @@ void hubblePartComputer::applyPhysics(PhysicsManager& physics)
 	angle += rotationSpeed;
 }
 
+void HubblePartComputer::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 2; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
+}
+
 
 /*******************************
- hubblePartRight
+ HubblePartRight
 ********************************/
 
-hubblePartRight::hubblePartRight()
+HubblePartRight::HubblePartRight()
 {
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
@@ -115,29 +136,29 @@ hubblePartRight::hubblePartRight()
 	rotationSpeed = random(0.1, 5.0);
 }
 
-hubblePartRight::hubblePartRight(Position& pos, Velocity& vel)
+HubblePartRight::HubblePartRight(Position& pos, Velocity& vel, double startAngle)
 {
-	angle = random(0.0, 6.2);
+	angle = startAngle;
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 8.0 * sin(angle + 1.5708);
+	double y = 128000.0 * 8.0 * cos(angle + 1.5708);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle + 1.5708);
+	double dy = vel.getDy() + velocityAdded * cos(angle + 1.5708);
 
-	radius = 254000.0;
+	radius = 128000.0 * 8.0;
 	isAlive = true;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = -0.03;
 }
 
-void hubblePartRight::draw(ogstream& gout) const
+void HubblePartRight::draw(ogstream& gout) const
 {
 	gout.drawHubbleRight(position, angle);
 }
 
-void hubblePartRight::applyPhysics(PhysicsManager& physics)
+void HubblePartRight::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -155,13 +176,23 @@ void hubblePartRight::applyPhysics(PhysicsManager& physics)
 	angle += rotationSpeed;
 }
 
+void HubblePartRight::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 2; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
+}
 
 
 /*******************************
- hubblePartLeft
+ HubblePartLeft
 ********************************/
 
-hubblePartLeft::hubblePartLeft()
+HubblePartLeft::HubblePartLeft()
 {
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
@@ -169,29 +200,29 @@ hubblePartLeft::hubblePartLeft()
 	rotationSpeed = random(0.1, 5.0);
 }
 
-hubblePartLeft::hubblePartLeft(Position& pos, Velocity& vel)
+HubblePartLeft::HubblePartLeft(Position& pos, Velocity& vel, double startAngle)
 {
-	angle = random(0.0, 6.2);
+	angle = startAngle;
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 8.0 * sin(angle + 4.71239);
+	double y = 128000.0 * 8.0 * cos(angle + 4.71239);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle + 4.71239);
+	double dy = vel.getDy() + velocityAdded * cos(angle + 4.71239);
 
-	radius = 254000.0;
+	radius = 128000.0 * 8.0;
 	isAlive = true;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = -0.03;
 }
 
-void hubblePartLeft::draw(ogstream& gout) const
+void HubblePartLeft::draw(ogstream& gout) const
 {
 	gout.drawHubbleLeft(position, angle);
 }
 
-void hubblePartLeft::applyPhysics(PhysicsManager& physics)
+void HubblePartLeft::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -207,4 +238,15 @@ void hubblePartLeft::applyPhysics(PhysicsManager& physics)
 	position.setMetersY(physics.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
 
 	angle += rotationSpeed;
+}
+
+void HubblePartLeft::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 2; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
 }

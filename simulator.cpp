@@ -37,6 +37,7 @@ void Simulator::checkCollisions()
 			incrementOuter = false;
 		}
 
+		// Determine collisions between everything else
 		else
 		{
 			for (auto itInner = std::next(itOuter); itInner != satelites.end();)
@@ -45,8 +46,8 @@ void Simulator::checkCollisions()
 				Position pt2 = (*itInner)->getPosition();
 				double distance = physics.calculateDistanceBetweenPoints(pt1, pt2);
 
-				// If the combined radius of both objects is less than the distance appart 
-				// kill both satelites
+				// If the combined radius of both objects is less than the distance between 
+				// them kill both satelites
 				if (distance < (*itOuter)->getRadius() + (*itInner)->getRadius())
 				{
 					// Kill the colliding satelites and add parts and fragments to the list
@@ -83,41 +84,6 @@ void Simulator::checkCollisions()
 		}
 	}
 }
-
-
-
-			//if (!(*itInner)->getIsAlive())
-			//{
-			//	if ((*itInner)->getType() == "Bullet" || (*itInner)->getType() == "Fragment")
-			//		delete(*itInner);
-			//	
-			//}
-		
-		//if (!(*itOuter)->getIsAlive())
-		//{
-		//	if ((*itOuter)->getType() == "Bullet" || (*itOuter)->getType() == "Fragment")
-		//		delete(*itOuter);
-		//	
-		//}
-		//else
-
-	//for (int i = 0; i < satelites.size(); i++)
-	//{
-	//	for (int j = i + 1; j < satelites.size(); j++)
-	//	{
-	//		Position pt1 = satelites[i]->getPosition();
-	//		Position pt2 = satelites[j]->getPosition();
-	//		double distance = physics.calculateDiatanceBetweenPoints(pt1, pt2);
-
-	//		if (distance < satelites[i]->getRadius() + satelites[j] ->getRadius())
-	//		{
- // 				std::vector<Satelite*> frags1 = satelites[i]->setToDead();
-	//			std::vector<Satelite*> frags2 = satelites[j]->setToDead();
-	//			//satelites.insert(satelites.end(), frags1.begin(), frags1.end());
-	//			//satelites.insert(satelites.end(), frags2.begin(), frags2.end());
-	//		}
-	//	}
-	//}
 
 
 void Simulator::drawObjects(ogstream& gout)

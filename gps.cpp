@@ -44,7 +44,15 @@ void GPS::draw(ogstream& gout) const
 }
 
 
-bool GPS::setToDead(bool isAlive)
+void GPS::setToDead(std::list<Satelite*>& satelites)
 {
-	return false;
+	isAlive = false;
+
+	GPSPartCenter* center = new GPSPartCenter(position, velocity, angle);
+	GPSPartLeft* left = new GPSPartLeft(position, velocity, angle);
+	GPSPartRight* right = new GPSPartRight(position, velocity, angle);
+
+	satelites.push_back(center);
+	satelites.push_back(left);
+	satelites.push_back(right);
 }

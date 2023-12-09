@@ -1,6 +1,6 @@
 #include "dragonPart.h"
 
-dragonPartCenter::dragonPartCenter()
+DragonPartCenter::DragonPartCenter()
 {
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
@@ -8,29 +8,29 @@ dragonPartCenter::dragonPartCenter()
 	rotationSpeed = random(0.1, 5.0);
 }
 
-dragonPartCenter::dragonPartCenter(Position& pos, Velocity& vel)
+DragonPartCenter::DragonPartCenter(Position& pos, Velocity& vel, double startAngle)
 {
-	angle = random(0.0, 6.2);
+	angle = startAngle;
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 6.0 * sin(angle);
+	double y = 128000.0 * 6.0 * cos(angle);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle);
+	double dy = vel.getDy() + velocityAdded * cos(angle);
 
-	radius = 254000.0;
+	radius = 128000.0 * 6.0;
 	isAlive = true;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = -0.01;
 }
 
-void dragonPartCenter::draw(ogstream& gout) const
+void DragonPartCenter::draw(ogstream& gout) const
 {
 	gout.drawCrewDragonCenter(position, angle);
 }
 
-void dragonPartCenter::applyPhysics(PhysicsManager& physics)
+void DragonPartCenter::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -48,9 +48,20 @@ void dragonPartCenter::applyPhysics(PhysicsManager& physics)
 	angle += rotationSpeed;
 }
 
+void DragonPartCenter::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 4; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
+}
 
 
-dragonPartLeft::dragonPartLeft()
+
+DragonPartLeft::DragonPartLeft()
 {
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
@@ -58,29 +69,29 @@ dragonPartLeft::dragonPartLeft()
 	rotationSpeed = random(0.1, 5.0);
 }
 
-dragonPartLeft::dragonPartLeft(Position& pos, Velocity& vel)
+DragonPartLeft::DragonPartLeft(Position& pos, Velocity& vel, double startAngle)
 {
-	angle = random(0.0, 6.2);
+	angle = startAngle;
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 7.0 * sin(angle + 4.71239);
+	double y = 128000.0 * 7.0 * cos(angle + 4.71239);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle + 4.71239);
+	double dy = vel.getDy() + velocityAdded * cos(angle + 4.71239);
 
-	radius = 254000.0;
+	radius = 128000.0 * 6.0;
 	isAlive = true;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = -0.01;
 }
 
-void dragonPartLeft::draw(ogstream& gout) const
+void DragonPartLeft::draw(ogstream& gout) const
 {
 	gout.drawCrewDragonLeft(position, angle);
 }
 
-void dragonPartLeft::applyPhysics(PhysicsManager& physics)
+void DragonPartLeft::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -98,39 +109,50 @@ void dragonPartLeft::applyPhysics(PhysicsManager& physics)
 	angle += rotationSpeed;
 }
 
-
-
-dragonPartRight::dragonPartRight()
+void DragonPartLeft::setToDead(std::list<Satelite*>& satelites)
 {
-	angle = random(0.0, 6.2);
-	radius = 254000.0;
-	isAlive = true;
-	rotationSpeed = random(0.1, 5.0);
+	isAlive = false;
+
+	for (int i = 0; i < 2; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
 }
 
-dragonPartRight::dragonPartRight(Position& pos, Velocity& vel)
+
+
+DragonPartRight::DragonPartRight()
 {
 	angle = random(0.0, 6.2);
+	radius = 128000.0 * 6.0;
+	isAlive = true;
+	rotationSpeed = -0.01;
+}
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+DragonPartRight::DragonPartRight(Position& pos, Velocity& vel, double startAngle)
+{
+	angle = startAngle;
+
+	double x = 128000.0 * 7.0 * sin(angle + 1.5708);
+	double y = 128000.0 * 7.0 * cos(angle + 1.5708);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle + 1.5708);
+	double dy = vel.getDy() + velocityAdded * cos(angle + 1.5708);
 
-	radius = 254000.0;
+	radius = 128000.0 * 6.0;
 	isAlive = true;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = -0.01;
 }
 
-void dragonPartRight::draw(ogstream& gout) const
+void DragonPartRight::draw(ogstream& gout) const
 {
 	gout.drawCrewDragonRight(position, angle);
 }
 
-void dragonPartRight::applyPhysics(PhysicsManager& physics)
+void DragonPartRight::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -146,4 +168,15 @@ void dragonPartRight::applyPhysics(PhysicsManager& physics)
 	position.setMetersY(physics.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
 
 	angle += rotationSpeed;
+}
+
+void DragonPartRight::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 2; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
 }

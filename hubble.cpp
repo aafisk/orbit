@@ -44,7 +44,17 @@ void Hubble::draw(ogstream& gout) const
 }
 
 
-bool Hubble::setToDead(bool isAlive)
+void Hubble::setToDead(std::list<Satelite*>& satelites)
 {
-	return false;
+	isAlive = false;
+
+	HubblePartTelescope* telescope = new HubblePartTelescope(position, velocity, angle);
+	HubblePartComputer* computer = new HubblePartComputer(position, velocity, angle);
+	HubblePartLeft* left = new HubblePartLeft(position, velocity, angle);
+	HubblePartRight* right = new HubblePartRight(position, velocity, angle);
+
+	satelites.push_back(telescope);
+	satelites.push_back(computer);
+	satelites.push_back(left);
+	satelites.push_back(right);
 }

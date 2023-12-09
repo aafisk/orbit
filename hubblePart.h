@@ -1,35 +1,49 @@
 #pragma once
 #include "satelite.h"
+#include "fragment.h"
 #include "uiDraw.h"
 
-class hubblePartTelescope : public Satelite
+class HubblePartLeft : public Satelite
 {
-	hubblePartTelescope();
-	hubblePartTelescope(Position& pos, Velocity& vel);
+public:
+	HubblePartLeft();
+	HubblePartLeft(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
+
 };
 
-class hubblePartComputer : public Satelite
+
+
+class HubblePartRight : public Satelite
 {
-	hubblePartComputer();
-	hubblePartComputer(Position& pos, Velocity& vel);
+public:
+	HubblePartRight();
+	HubblePartRight(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 };
 
-class hubblePartRight : public Satelite
+
+
+class HubblePartTelescope : public Satelite
 {
-	hubblePartRight();
-	hubblePartRight(Position& pos, Velocity& vel);
+public:
+	HubblePartTelescope();
+	HubblePartTelescope(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 };
 
-class hubblePartLeft : public Satelite
+class HubblePartComputer : public Satelite
 {
-	hubblePartLeft();
-	hubblePartLeft(Position& pos, Velocity& vel);
+public:
+	HubblePartComputer();
+	HubblePartComputer(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 };

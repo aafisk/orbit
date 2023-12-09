@@ -104,7 +104,7 @@ void DreamChaser::setToDead(std::list<Satelite*>& satelites)
 {
 	isAlive = false;
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		Fragment* frag = new Fragment(position, velocity);
 		satelites.push_back(frag);

@@ -1,30 +1,37 @@
 #pragma once
 #include "satelite.h"
+#include "fragment.h"
 #include "uiDraw.h"
 
-class dragonPartCenter : Satelite
+class DragonPartCenter : public Satelite
 {
-	dragonPartCenter();
-	dragonPartCenter(Position& pos, Velocity& vel);
+public:
+	DragonPartCenter();
+	DragonPartCenter(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 };
 
 
-class dragonPartRight : Satelite
+class DragonPartRight : public Satelite
 {
-	dragonPartRight();
-	dragonPartRight(Position& pos, Velocity& vel);
+public:
+	DragonPartRight();
+	DragonPartRight(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 };
 
 
-class dragonPartLeft : Satelite
+class DragonPartLeft : public Satelite
 {
-	dragonPartLeft();
-	dragonPartLeft(Position& pos, Velocity& vel);
+public:
+	DragonPartLeft();
+	DragonPartLeft(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 };
 

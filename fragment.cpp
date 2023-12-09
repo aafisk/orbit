@@ -19,13 +19,13 @@ Fragment::Fragment(Position& pos, Velocity& vel)
 	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle);
+	double dy = vel.getDy() + velocityAdded * cos(angle);
 
 	radius = 254000.0;
 	isAlive = true;
 	timeAlive = 0;
-	rotationSpeed = random(0.1, 5.0);
+	rotationSpeed = random(0.01, 0.1);
 }
 
 void Fragment::draw(ogstream& gout) const

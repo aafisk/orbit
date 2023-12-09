@@ -44,7 +44,15 @@ void Dragon::draw(ogstream& gout) const
 }
 
 
-bool Dragon::setToDead(bool isAlive)
+void Dragon::setToDead(std::list<Satelite*>& satelites)
 {
-	return false;
+	isAlive = false;
+
+	DragonPartCenter* center = new DragonPartCenter(position, velocity, angle);
+	DragonPartLeft* left = new DragonPartLeft(position, velocity, angle);
+	DragonPartRight* right = new DragonPartRight(position, velocity, angle);
+
+	satelites.push_back(center);
+	satelites.push_back(left);
+	satelites.push_back(right);
 }
