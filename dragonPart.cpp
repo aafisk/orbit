@@ -121,6 +121,9 @@ void DragonPartLeft::setToDead(std::list<Satelite*>& satelites)
 }
 
 
+/***************************
+Constructors for Right
+****************************/
 
 DragonPartRight::DragonPartRight()
 {

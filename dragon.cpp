@@ -1,5 +1,10 @@
 #include "dragon.h"
 
+/***************************
+Constructors
+****************************/
+
+// default
 Dragon::Dragon()
 {
 	angle = 1.5708;
@@ -9,6 +14,7 @@ Dragon::Dragon()
 	rotationSpeed = -0.01;
 }
 
+// non default
 Dragon::Dragon(Position pos, Velocity vel)
 {
 	position = pos;
@@ -19,6 +25,10 @@ Dragon::Dragon(Position pos, Velocity vel)
 	isAlive = true;
 	rotationSpeed = -0.01;
 }
+
+/**********************
+Physics
+**********************/
 
 void Dragon::applyPhysics(PhysicsManager& physics)
 {
@@ -37,6 +47,10 @@ void Dragon::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/***********************
+Draw
+***********************/
 
 void Dragon::draw(ogstream& gout) const
 {

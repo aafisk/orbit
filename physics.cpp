@@ -1,5 +1,9 @@
 #include "physics.h"
 
+/***************************
+Constructor
+****************************/
+
 PhysicsManager::PhysicsManager()
 {
 	secondsPerFrame = 48.0;
@@ -7,6 +11,10 @@ PhysicsManager::PhysicsManager()
 	gravityAtSea = 9.80665;
 	geoOrbit = 42164000.0;
 }
+
+/****************************************************
+Calculate the vertical and horizontal componants
+****************************************************/
 
 double PhysicsManager::calculateHorizontalComponent(double inputValue, double angle)
 {
@@ -18,6 +26,11 @@ double PhysicsManager::calculateVerticalComponent(double inputValue, double angl
 	return inputValue * cos(angle);
 }
 
+/****************************************************
+Calculate distance py taking in a position,
+velocity, and acceleration
+****************************************************/
+
 double PhysicsManager::calculateDistance(double position, double velocity, double acceleration)
 {
 	double part1 = velocity * secondsPerFrame;
@@ -26,10 +39,20 @@ double PhysicsManager::calculateDistance(double position, double velocity, doubl
 	return distance;
 }
 
+/****************************************************
+Calculate the new velocity based on the
+acceleration of the object
+****************************************************/
+
 double PhysicsManager::calculateVelocity(double velocity, double acceleration)
 {
 	return velocity + (acceleration * secondsPerFrame);
 }
+
+/****************************************************
+Calculate the gravity by taking in the 
+height above the surface
+****************************************************/
 
 double PhysicsManager::calculateGravity(double heightAboveSurface)
 {
@@ -37,6 +60,12 @@ double PhysicsManager::calculateGravity(double heightAboveSurface)
 	double gravity = gravityAtSea * (inner * inner);
 	return gravity;
 }
+
+/****************************************************
+Calculate the height above the surface by
+giving it a position and then getting the 
+square root of (x * y) + (y * y)
+****************************************************/
 
 double PhysicsManager::calculateHeightAboveSurface(Position position)
 {
@@ -47,6 +76,11 @@ double PhysicsManager::calculateHeightAboveSurface(Position position)
 	return result;
 }
 
+/****************************************************
+Calculate the direction of gravity based on the
+position of the satelite
+****************************************************/
+
 double PhysicsManager::calculateGravityDirection(Position satelitePosition)
 {
 	double x = 0 - satelitePosition.getMetersX();
@@ -54,6 +88,10 @@ double PhysicsManager::calculateGravityDirection(Position satelitePosition)
 	double direction = atan2(x, y);
 	return direction;
 }
+
+/****************************************************
+Calculate the distance between two points
+****************************************************/
 
 double PhysicsManager::calculateDistanceBetweenPoints(const Position& pt1, const Position& pt2)
 {

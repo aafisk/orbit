@@ -1,6 +1,11 @@
 #include "dreamChaser.h"
 #include <iostream>
 
+/***************************
+Constructors
+****************************/
+
+// default
 DreamChaser::DreamChaser()
 {
 	position = Position(-450, 450, true);
@@ -16,6 +21,7 @@ DreamChaser::DreamChaser()
 	thrustPower = 2.0;
 }
 
+// non default
 DreamChaser::DreamChaser(Position pos)
 {
 	position = pos;
@@ -29,10 +35,18 @@ DreamChaser::DreamChaser(Position pos)
 	thrustPower = 2.0;
 }
 
+/***********************
+Draw
+***********************/
+
 void DreamChaser::draw(ogstream& gout) const
 {
 	gout.drawShip(position, angle, thrust);
 }
+
+/**********************
+Physics
+**********************/
 
 void DreamChaser::applyPhysics(PhysicsManager& physics)
 {
@@ -66,6 +80,10 @@ void DreamChaser::applyPhysics(PhysicsManager& physics)
 	//std::cout << "Velocity: " << velocity.getDx() << " - " << velocity.getDy() << std::endl;
 	//std::cout << "Acceleration: " << acceleration.getDdx() << " - " << acceleration.getDdy() << std::endl;
 }
+
+/************************************
+Rotation for the Dream Chaser
+************************************/
 
 void DreamChaser::rotateClockwise()
 {

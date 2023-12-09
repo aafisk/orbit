@@ -1,10 +1,16 @@
 #include "bullet.h"
 
+/***************************
+Constructors
+****************************/
+
+// default
 Bullet::Bullet()
 {
 	timeAlive = 0;
 }
 
+// non default
 Bullet::Bullet(Position& pos, Velocity& vel, double startAngle)
 {
 	position = pos;
@@ -23,11 +29,18 @@ Bullet::Bullet(Position& pos, Velocity& vel, double startAngle)
 	velocity.setDy(velocity.getDy() + (9000 * cos(angle)));
 }
 
+/***********************
+Draw
+***********************/
+
 void Bullet::draw(ogstream& gout) const
 {
 	gout.drawProjectile(position);
 }
 
+/**********************
+Physics
+**********************/
 void Bullet::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);

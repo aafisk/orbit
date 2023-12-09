@@ -1,5 +1,9 @@
 #include "star.h"
 
+/***************************
+Constructor
+****************************/
+
 Star::Star()
 {
 	double x = random(-500.0, 500.0);
@@ -10,6 +14,12 @@ Star::Star()
 	phase = random(0, 250);
 	brighten = true;
 }
+
+/*******************************************
+Increase the phase of the star. Starts with 
+just a pixel and then increase in size as
+time passes
+*******************************************/
 
 void Star::increasePhase()
 {
@@ -23,6 +33,10 @@ void Star::increasePhase()
 	if (phase <= 0)
 		brighten = true;
 }
+
+/***********************
+Draw
+***********************/
 
 void Star::draw(ogstream& gout)
 {

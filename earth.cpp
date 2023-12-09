@@ -1,5 +1,9 @@
 #include "earth.h"
 
+/***************************
+Constructor
+****************************/
+
 Earth::Earth()
 {
 	angle = 0.0;
@@ -22,6 +26,10 @@ double Earth::getRotationSpeed() const
 	double part2 = 1440.0 / 86400.0;
 	return part1 * part2;
 }
+
+/***********************
+Draw
+***********************/
 
 void Earth::draw(ogstream& gout) 
 {

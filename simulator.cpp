@@ -3,11 +3,11 @@
 
 void Simulator::update()
 {
-	//input();
 	advanceSatelites(physics);
 	drawObjects(gout);
 }
 
+// receive inputs
 void Simulator::input(const Interface& pUI)
 {
 	if (pUI.isUp())
@@ -23,6 +23,7 @@ void Simulator::input(const Interface& pUI)
 		satelites.push_back(ship.fire());
 }
 
+// check the collision of two objects
 void Simulator::checkCollisions()
 {
 	for (auto itOuter = satelites.begin(); itOuter != satelites.end();)

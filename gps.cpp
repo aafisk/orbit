@@ -1,6 +1,11 @@
 #include "gps.h"
 using namespace std;
 
+/***************************
+Constructors
+****************************/
+
+// default
 GPS::GPS()
 {
 	angle = 0.0;
@@ -9,6 +14,7 @@ GPS::GPS()
 	isAlive = true;
 }
 
+// non default
 GPS::GPS(Position pos, Velocity vel)
 {
 	position = pos;
@@ -19,6 +25,11 @@ GPS::GPS(Position pos, Velocity vel)
 	isAlive = true;
 	rotationSpeed = -0.008;
 }
+
+
+/**********************
+Physics
+**********************/
 
 void GPS::applyPhysics(PhysicsManager& physics)
 {
@@ -37,6 +48,10 @@ void GPS::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/***********************
+Draw
+***********************/
 
 void GPS::draw(ogstream& gout) const
 {
