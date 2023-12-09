@@ -1,6 +1,6 @@
 /*************************************************************
  * 1. Name:
- *      Aaron Fisk and  - Final
+ *      Aaron Fisk and [Your name here] - Final Submission
  * 2. Assignment Name:
  *      Lab 07: Orbit Simulator
  * 3. Assignment Description:
@@ -26,6 +26,9 @@ double Position::metersFromPixels = 40.0;
 ogstream gout;
 Earth earth;
 
+/******************************
+* The main callback loop that drives the simulator
+******************************/
 void callBack(const Interface* pUI, void* p)
 {
    Simulator* sim = (Simulator*)p;
@@ -59,12 +62,10 @@ int main(int argc, char** argv)
       "Orbit Simulator",   /* name on the window */
       ptUpperRight);
 
-   // Initialize the demo
-   //Demo demo(ptUpperRight);
-
    // Initialize the simulator
    Simulator sim;
 
+   // Populate the simulator with everything
    sim.populateSim();
 
    // set everything into action

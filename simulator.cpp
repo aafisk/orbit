@@ -16,15 +16,19 @@ Receive inputs from the user
 
 void Simulator::input(const Interface& pUI)
 {
+	// Activate or deactivate the thrust of the ship
 	if (pUI.isUp())
 		ship.activateThrust();
 	else
 		ship.deactivateThrust();
 
+	// Turn the ship
 	if (pUI.isLeft())
 		ship.rotateCounterClock();
 	if (pUI.isRight())
 		ship.rotateClockwise();
+
+	// Fire a bullet
 	if (pUI.isSpace())
 		satelites.push_back(ship.fire());
 }
@@ -125,8 +129,7 @@ void Simulator::drawObjects(ogstream& gout)
 }
 
 /*****************************************
-Have our satellites chance throught the
-game
+Have our satellites advance from one point to another
 *****************************************/
 
 void Simulator::advanceSatelites(PhysicsManager& physics)
@@ -138,7 +141,7 @@ void Simulator::advanceSatelites(PhysicsManager& physics)
 		(*it)->applyPhysics(physics);
 	}
 
-	// Remove dead satelites and bullets from the vector
+	// Remove dead fragments and bullets from the list that have not alreay collided
 	for (auto it = satelites.begin(); it != satelites.end(); )
 	{
 		if (!(*it)->getIsAlive())
