@@ -1,5 +1,11 @@
 #include "fragment.h"
 
+
+/***************************
+Constructors
+****************************/
+
+// default
 Fragment::Fragment()
 {
 	angle = random(0.0, 6.2);
@@ -10,6 +16,7 @@ Fragment::Fragment()
 	rotationSpeed = random(0.01, 0.1);
 }
 
+// non default
 Fragment::Fragment(Position& pos, Velocity& vel)
 {
 	angle = random(0.0, 6.2);
@@ -32,6 +39,11 @@ void Fragment::draw(ogstream& gout) const
 {
 	gout.drawFragment(position, angle);
 }
+
+
+/**********************
+Physics
+**********************/
 
 void Fragment::applyPhysics(PhysicsManager& physics)
 {

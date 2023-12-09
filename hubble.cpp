@@ -1,5 +1,10 @@
 #include "hubble.h"
 
+/***************************
+Constructors
+****************************/
+
+// default
 Hubble::Hubble()
 {
 	angle = 1.5708;
@@ -9,6 +14,7 @@ Hubble::Hubble()
 	rotationSpeed = -0.03;
 }
 
+// non default
 Hubble::Hubble(Position pos, Velocity vel)
 {
 	position = pos;
@@ -19,6 +25,10 @@ Hubble::Hubble(Position pos, Velocity vel)
 	isAlive = true;
 	rotationSpeed = -0.03;
 }
+
+/**********************
+Physics
+**********************/
 
 void Hubble::applyPhysics(PhysicsManager& physics)
 {
@@ -37,6 +47,10 @@ void Hubble::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/***********************
+Draw
+***********************/
 
 void Hubble::draw(ogstream& gout) const
 {

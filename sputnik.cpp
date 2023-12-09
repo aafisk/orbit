@@ -4,6 +4,11 @@
 
 using namespace std;
 
+/***************************
+Constructors
+****************************/
+
+// default
 Sputnik::Sputnik()
 {
 	position = Position(-36515095.13, 21082000.0);
@@ -16,6 +21,7 @@ Sputnik::Sputnik()
 	rotationSpeed = (0.2);
 }
 
+// non default
 Sputnik::Sputnik(Position pos)
 {
 	position = pos;
@@ -27,6 +33,10 @@ Sputnik::Sputnik(Position pos)
 	isAlive = true;
 	rotationSpeed = (0.2);
 }
+
+/**********************
+Physics
+**********************/
 
 void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 {
@@ -46,6 +56,10 @@ void Sputnik::applyPhysics(PhysicsManager &physicsManager)
 	angle += rotationSpeed;
 	rotationSpeed += 0.0001;
 }
+
+/***********************
+Draw
+***********************/
 
 void Sputnik::draw(ogstream& gout) const 
 {

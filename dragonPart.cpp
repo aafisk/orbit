@@ -1,5 +1,10 @@
 #include "dragonPart.h"
 
+
+/***************************
+Constructors for Center
+****************************/
+
 dragonPartCenter::dragonPartCenter()
 {
 	angle = random(0.0, 6.2);
@@ -49,6 +54,9 @@ void dragonPartCenter::applyPhysics(PhysicsManager& physics)
 }
 
 
+/***************************
+Constructors for Left
+****************************/
 
 dragonPartLeft::dragonPartLeft()
 {
@@ -99,6 +107,9 @@ void dragonPartLeft::applyPhysics(PhysicsManager& physics)
 }
 
 
+/***************************
+Constructors for Right
+****************************/
 
 dragonPartRight::dragonPartRight()
 {

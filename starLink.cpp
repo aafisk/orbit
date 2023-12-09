@@ -1,5 +1,10 @@
 #include "starLink.h"
 
+/***************************
+Constructors
+****************************/
+
+// default
 StarLink::StarLink()
 {
 	angle = 1.5708;
@@ -9,6 +14,7 @@ StarLink::StarLink()
 	rotationSpeed = -0.01;
 }
 
+// non default
 StarLink::StarLink(Position pos, Velocity vel)
 {
 	position = pos;
@@ -19,6 +25,10 @@ StarLink::StarLink(Position pos, Velocity vel)
 	isAlive = true;
 	rotationSpeed = -0.01;
 }
+
+/**********************
+Physics
+**********************/
 
 void StarLink::applyPhysics(PhysicsManager& physics)
 {
@@ -37,6 +47,10 @@ void StarLink::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/***********************
+Draw
+***********************/
 
 void StarLink::draw(ogstream& gout) const
 {
