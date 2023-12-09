@@ -99,3 +99,14 @@ Bullet* DreamChaser::fire()
 
 	return new Bullet(position, velocity, angle);
 }
+
+void DreamChaser::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 4; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
+}

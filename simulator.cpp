@@ -29,37 +29,58 @@ void Simulator::checkCollisions()
 	{
 		bool incrementOuter = true;
 
-		for (auto itInner = std::next(itOuter); itInner != satelites.end();)
+		// Determine collisions with the earth
+		if (0 > physics.calculateHeightAboveSurface((*itOuter)->getPosition()))
 		{
-			Position pt1 = (*itOuter)->getPosition();
-			Position pt2 = (*itInner)->getPosition();
-			double distance = physics.calculateDiatanceBetweenPoints(pt1, pt2);
-
-			// If the combined radius of both objects is less than the distance appart 
-			// kill both satelites
-			if (distance < (*itOuter)->getRadius() + (*itInner)->getRadius())
-			{
-				// Kill the colliding satelites
-           	(*itOuter)->setToDead(satelites);
-				(*itInner)->setToDead(satelites);
-				
-				// Erase the satelites that have collided and increase the iterator
-				// for both loops
-  				itOuter = satelites.erase(itOuter);
-				incrementOuter = false;
-				itInner = satelites.erase(itInner);
-			}
-
-			// increment the iterator for the inner loop if nothing collides
-			else
-			{
-				++itInner;
-			}
+			(*itOuter)->setToDead(satelites);
+			itOuter = satelites.erase(itOuter);
+			incrementOuter = false;
 		}
 
-		// Increment the iterator for the outer loop if nothing collides
-		if (incrementOuter)
-			++itOuter;
+		else
+		{
+			for (auto itInner = std::next(itOuter); itInner != satelites.end();)
+			{
+				Position pt1 = (*itOuter)->getPosition();
+				Position pt2 = (*itInner)->getPosition();
+				double distance = physics.calculateDistanceBetweenPoints(pt1, pt2);
+
+				// If the combined radius of both objects is less than the distance appart 
+				// kill both satelites
+				if (distance < (*itOuter)->getRadius() + (*itInner)->getRadius())
+				{
+					// Kill the colliding satelites and add parts and fragments to the list
+					(*itOuter)->setToDead(satelites);
+					(*itInner)->setToDead(satelites);
+
+					// Erase the satelites that have collided and increase the iterator
+					// for both loops
+					satelites.erase(itOuter);
+					incrementOuter = false;
+					satelites.erase(itInner);
+
+					// Set the iterators to the end of the list since there is
+					// a miniscule chance that multiple collisions will happen 
+					// in the same frame. If there are then they will simply 
+					// be handled next frame
+					itOuter = satelites.end();
+					itInner = satelites.end();
+
+				}
+
+				// increment the iterator for the inner loop if nothing collides
+				else
+				{
+					++itInner;
+				}
+			}
+
+			// Increment the iterator for the outer loop if nothing collides
+			if (incrementOuter)
+			{
+				++itOuter;
+			}
+		}
 	}
 }
 

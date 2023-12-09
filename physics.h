@@ -17,7 +17,7 @@ public:
 	double calculateGravity(double heightAboveSurface);
 	double calculateHeightAboveSurface(Position position);
 	double calculateGravityDirection(Position satelitePosition);
-	double calculateDiatanceBetweenPoints(const Position& pt1, const Position& pt2);
+	double calculateDistanceBetweenPoints(const Position& pt1, const Position& pt2);
 
 private:
 	double secondsPerFrame;

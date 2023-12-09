@@ -2,6 +2,7 @@
 
 #include "satelite.h"
 #include "bullet.h"
+#include "fragment.h"
 #include "uiDraw.h"
 
 class DreamChaser : public Satelite
@@ -11,7 +12,7 @@ public:
 	DreamChaser(Position pos);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
-	void setToDead(std::list<Satelite*>& satelites) override { isAlive = false; }
+	void setToDead(std::list<Satelite*>& satelites) override;
 	void rotateClockwise();
 	void rotateCounterClock();
 	void activateThrust();

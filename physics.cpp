@@ -55,7 +55,7 @@ double PhysicsManager::calculateGravityDirection(Position satelitePosition)
 	return direction;
 }
 
-double PhysicsManager::calculateDiatanceBetweenPoints(const Position& pt1, const Position& pt2)
+double PhysicsManager::calculateDistanceBetweenPoints(const Position& pt1, const Position& pt2)
 {
 	double x = pt1.getMetersX() - pt2.getMetersX();
 	double y = pt1.getMetersY() - pt2.getMetersY();
