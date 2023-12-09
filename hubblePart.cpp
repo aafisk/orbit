@@ -1,5 +1,9 @@
 #include "HubblePart.h"
 
+/***************************
+constructors
+****************************/
+
 HubblePartTelescope::HubblePartTelescope()
 {
 	angle = random(0.0, 6.2);
@@ -25,10 +29,18 @@ HubblePartTelescope::HubblePartTelescope(Position& pos, Velocity& vel, double st
 	rotationSpeed = -0.03;
 }
 
+/***************************
+draw
+****************************/
+
 void HubblePartTelescope::draw(ogstream& gout) const
 {
 	gout.drawHubbleTelescope(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void HubblePartTelescope::applyPhysics(PhysicsManager& physics)
 {
@@ -47,6 +59,11 @@ void HubblePartTelescope::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void HubblePartTelescope::setToDead(std::list<Satelite*>& satelites)
 {
@@ -89,10 +106,18 @@ HubblePartComputer::HubblePartComputer(Position& pos, Velocity& vel, double star
 	rotationSpeed = -0.03;
 }
 
+/***************************
+draw
+****************************/
+
 void HubblePartComputer::draw(ogstream& gout) const
 {
 	gout.drawHubbleComputer(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void HubblePartComputer::applyPhysics(PhysicsManager& physics)
 {
@@ -111,6 +136,11 @@ void HubblePartComputer::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void HubblePartComputer::setToDead(std::list<Satelite*>& satelites)
 {
@@ -153,10 +183,18 @@ HubblePartRight::HubblePartRight(Position& pos, Velocity& vel, double startAngle
 	rotationSpeed = -0.03;
 }
 
+/***************************
+draw
+****************************/
+
 void HubblePartRight::draw(ogstream& gout) const
 {
 	gout.drawHubbleRight(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void HubblePartRight::applyPhysics(PhysicsManager& physics)
 {
@@ -217,10 +255,18 @@ HubblePartLeft::HubblePartLeft(Position& pos, Velocity& vel, double startAngle)
 	rotationSpeed = -0.03;
 }
 
+/***************************
+draw
+****************************/
+
 void HubblePartLeft::draw(ogstream& gout) const
 {
 	gout.drawHubbleLeft(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void HubblePartLeft::applyPhysics(PhysicsManager& physics)
 {
@@ -239,6 +285,11 @@ void HubblePartLeft::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void HubblePartLeft::setToDead(std::list<Satelite*>& satelites)
 {

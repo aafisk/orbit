@@ -58,6 +58,10 @@ void GPS::draw(ogstream& gout) const
 	gout.drawGPS(position, angle);
 }
 
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void GPS::setToDead(std::list<Satelite*>& satelites)
 {

@@ -57,6 +57,10 @@ void StarLink::draw(ogstream& gout) const
 	gout.drawStarlink(position, angle);
 }
 
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void StarLink::setToDead(std::list<Satelite*>& satelites)
 {

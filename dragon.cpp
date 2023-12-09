@@ -57,6 +57,10 @@ void Dragon::draw(ogstream& gout) const
 	gout.drawCrewDragon(position, angle);
 }
 
+/************************************************
+kill the satelite and then create parts that 
+will be left behind
+*************************************************/
 
 void Dragon::setToDead(std::list<Satelite*>& satelites)
 {

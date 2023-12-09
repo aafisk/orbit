@@ -1,5 +1,9 @@
 #include "gpsPart.h"
 
+/***************************
+Consctructors
+****************************/
+
 GPSPartLeft::GPSPartLeft()
 {
 	angle = random(0.0, 6.2);
@@ -25,10 +29,18 @@ GPSPartLeft::GPSPartLeft(Position& pos, Velocity& vel, double startAngle)
 	rotationSpeed = -0.008;
 }
 
+/***************************
+Draw
+****************************/
+
 void GPSPartLeft::draw(ogstream& gout) const
 {
 	gout.drawGPSLeft(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void GPSPartLeft::applyPhysics(PhysicsManager& physics)
 {
@@ -47,6 +59,11 @@ void GPSPartLeft::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void GPSPartLeft::setToDead(std::list<Satelite*>& satelites)
 {
@@ -72,6 +89,11 @@ GPSPartRight::GPSPartRight()
 	rotationSpeed = random(0.1, 5.0);
 }
 
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
+
 GPSPartRight::GPSPartRight(Position& pos, Velocity& vel, double startAngle)
 {
 	angle = startAngle;
@@ -89,10 +111,18 @@ GPSPartRight::GPSPartRight(Position& pos, Velocity& vel, double startAngle)
 	rotationSpeed = -0.008;
 }
 
+/***************************
+draw
+****************************/
+
 void GPSPartRight::draw(ogstream& gout) const
 {
 	gout.drawGPSRight(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void GPSPartRight::applyPhysics(PhysicsManager& physics)
 {
@@ -111,6 +141,11 @@ void GPSPartRight::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void GPSPartRight::setToDead(std::list<Satelite*>& satelites)
 {
@@ -153,10 +188,18 @@ GPSPartCenter::GPSPartCenter(Position& pos, Velocity& vel, double startAngle)
 	rotationSpeed = -0.008;
 }
 
+/***************************
+draw
+****************************/
+
 void GPSPartCenter::draw(ogstream& gout) const
 {
 	gout.drawGPSCenter(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void GPSPartCenter::applyPhysics(PhysicsManager& physics)
 {
@@ -175,6 +218,11 @@ void GPSPartCenter::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void GPSPartCenter::setToDead(std::list<Satelite*>& satelites)
 {

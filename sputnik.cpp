@@ -66,6 +66,10 @@ void Sputnik::draw(ogstream& gout) const
 	gout.drawSputnik(position, angle);
 }
 
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void Sputnik::setToDead(std::list<Satelite*>& satelites)
 {

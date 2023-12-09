@@ -57,6 +57,11 @@ void Hubble::draw(ogstream& gout) const
 	gout.drawHubble(position, angle);
 }
 
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
+
 
 void Hubble::setToDead(std::list<Satelite*>& satelites)
 {

@@ -118,6 +118,11 @@ Bullet* DreamChaser::fire()
 	return new Bullet(position, velocity, angle);
 }
 
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
+
 void DreamChaser::setToDead(std::list<Satelite*>& satelites)
 {
 	isAlive = false;

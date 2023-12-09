@@ -1,5 +1,9 @@
 #include "starlinkPart.h"
 
+/***********************
+constructors
+***********************/
+
 StarLinkPartArray::StarLinkPartArray()
 {
 	angle = random(0.0, 6.2);
@@ -26,10 +30,18 @@ StarLinkPartArray::StarLinkPartArray(Position& pos, Velocity& vel, double startA
 	rotationSpeed = random(0.1, 5.0);
 }
 
+/***********************
+Draw
+***********************/
+
 void StarLinkPartArray::draw(ogstream& gout) const
 {
 	gout.drawStarlinkArray(position, angle);
 }
+
+/***********************
+physics
+***********************/
 
 void StarLinkPartArray::applyPhysics(PhysicsManager& physics)
 {
@@ -48,6 +60,11 @@ void StarLinkPartArray::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void StarLinkPartArray::setToDead(std::list<Satelite*>& satelites)
 {
@@ -91,10 +108,18 @@ StarLinkPartBody::StarLinkPartBody(Position& pos, Velocity& vel, double startAng
 	rotationSpeed = random(0.1, 5.0);
 }
 
+/***********************
+Draw
+***********************/
+
 void StarLinkPartBody::draw(ogstream& gout) const
 {
 	gout.drawStarlinkBody(position, angle);
 }
+
+/***********************
+physics
+***********************/
 
 void StarLinkPartBody::applyPhysics(PhysicsManager& physics)
 {
@@ -113,6 +138,11 @@ void StarLinkPartBody::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/************************************************
+kill the satelite and then create parts that
+will be left behind
+*************************************************/
 
 void StarLinkPartBody::setToDead(std::list<Satelite*>& satelites)
 {

@@ -1,5 +1,10 @@
 #include "dragonPart.h"
 
+/***************************
+Constructors
+****************************/
+
+// default
 DragonPartCenter::DragonPartCenter()
 {
 	angle = random(0.0, 6.2);
@@ -8,6 +13,7 @@ DragonPartCenter::DragonPartCenter()
 	rotationSpeed = random(0.1, 5.0);
 }
 
+// non default
 DragonPartCenter::DragonPartCenter(Position& pos, Velocity& vel, double startAngle)
 {
 	angle = startAngle;
@@ -25,10 +31,18 @@ DragonPartCenter::DragonPartCenter(Position& pos, Velocity& vel, double startAng
 	rotationSpeed = -0.01;
 }
 
+/***************************
+Draw
+****************************/
+
 void DragonPartCenter::draw(ogstream& gout) const
 {
 	gout.drawCrewDragonCenter(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void DragonPartCenter::applyPhysics(PhysicsManager& physics)
 {
@@ -48,6 +62,10 @@ void DragonPartCenter::applyPhysics(PhysicsManager& physics)
 	angle += rotationSpeed;
 }
 
+/***********************************************
+Kill part and then have fragment left behind
+************************************************/
+
 void DragonPartCenter::setToDead(std::list<Satelite*>& satelites)
 {
 	isAlive = false;
@@ -59,6 +77,9 @@ void DragonPartCenter::setToDead(std::list<Satelite*>& satelites)
 	}
 }
 
+/************************************
+Constructors for Right for left
+*************************************/
 
 DragonPartLeft::DragonPartLeft()
 {
@@ -85,10 +106,18 @@ DragonPartLeft::DragonPartLeft(Position& pos, Velocity& vel, double startAngle)
 	rotationSpeed = -0.01;
 }
 
+/***************************
+Draw
+****************************/
+
 void DragonPartLeft::draw(ogstream& gout) const
 {
 	gout.drawCrewDragonLeft(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void DragonPartLeft::applyPhysics(PhysicsManager& physics)
 {
@@ -107,6 +136,10 @@ void DragonPartLeft::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/***********************************************
+Kill part and then have fragment left behind
+************************************************/
 
 void DragonPartLeft::setToDead(std::list<Satelite*>& satelites)
 {
@@ -149,10 +182,18 @@ DragonPartRight::DragonPartRight(Position& pos, Velocity& vel, double startAngle
 	rotationSpeed = -0.01;
 }
 
+/***************************
+Draw
+****************************/
+
 void DragonPartRight::draw(ogstream& gout) const
 {
 	gout.drawCrewDragonRight(position, angle);
 }
+
+/***************************
+physics
+****************************/
 
 void DragonPartRight::applyPhysics(PhysicsManager& physics)
 {
@@ -171,6 +212,10 @@ void DragonPartRight::applyPhysics(PhysicsManager& physics)
 
 	angle += rotationSpeed;
 }
+
+/***********************************************
+Kill part and then have fragment left behind
+************************************************/
 
 void DragonPartRight::setToDead(std::list<Satelite*>& satelites)
 {

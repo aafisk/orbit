@@ -35,6 +35,10 @@ Fragment::Fragment(Position& pos, Velocity& vel)
 	rotationSpeed = random(0.01, 0.1);
 }
 
+/***********************
+Draw
+***********************/
+
 void Fragment::draw(ogstream& gout) const
 {
 	gout.drawFragment(position, angle);

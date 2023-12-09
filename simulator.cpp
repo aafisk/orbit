@@ -1,5 +1,8 @@
 #include "simulator.h"
 
+/*****************************************
+update the game
+*****************************************/
 
 void Simulator::update()
 {
@@ -7,7 +10,10 @@ void Simulator::update()
 	drawObjects(gout);
 }
 
-// receive inputs
+/*****************************************
+Receive inputs from the user
+*****************************************/
+
 void Simulator::input(const Interface& pUI)
 {
 	if (pUI.isUp())
@@ -23,7 +29,10 @@ void Simulator::input(const Interface& pUI)
 		satelites.push_back(ship.fire());
 }
 
-// check the collision of two objects
+/*****************************************
+Check collision between 2 objects
+*****************************************/
+
 void Simulator::checkCollisions()
 {
 	for (auto itOuter = satelites.begin(); itOuter != satelites.end();)
@@ -93,6 +102,10 @@ void Simulator::checkCollisions()
 	}
 }
 
+/*****************************************
+draw our stars, earth and satellites
+*****************************************/
+
 
 void Simulator::drawObjects(ogstream& gout)
 {
@@ -110,6 +123,11 @@ void Simulator::drawObjects(ogstream& gout)
 		(*(*it)).draw(gout);
 	}
 }
+
+/*****************************************
+Have our satellites chance throught the
+game
+*****************************************/
 
 void Simulator::advanceSatelites(PhysicsManager& physics)
 {
@@ -134,6 +152,11 @@ void Simulator::advanceSatelites(PhysicsManager& physics)
 	}
 }
 
+/*****************************************
+populate our simulator with our
+satellites, earth, and stars 
+*****************************************/
+
 void Simulator::populateSim()
 {
 	populateStars();
@@ -149,6 +172,10 @@ void Simulator::populateSim()
 	satelites.push_back(hubble);
 	satelites.push_back(dragon);
 }
+
+/*****************************************
+Create 200 stars
+*****************************************/
 
 void Simulator::populateStars()
 {
