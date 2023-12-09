@@ -33,16 +33,16 @@ private:
 	Earth earth;
 	ogstream gout;
 	DreamChaser ship = DreamChaser(Position(-57600000, 57600000));
-	Sputnik sputnik = Sputnik();
-	GPS gps1 = GPS(Position(0.0, 26560000.0), Velocity(-3880.0, 0.0));
-	GPS gps2 = GPS(Position(23001634.72, 13280000.0), Velocity(-1940.00, 3360.18));
-	GPS gps3 = GPS(Position(23001634.72, -13280000.0), Velocity(1940.00, 3360.18));
-	GPS gps4 = GPS(Position(0.0, -26560000.0), Velocity(3880.0, 0.0));
-	GPS gps5 = GPS(Position(-23001634.72, -13280000.0), Velocity(1940.00, -3360.18));
-	GPS gps6 = GPS(Position(-23001634.72, 13280000.0), Velocity(-1940.00, -3360.18));
-	StarLink starLink = StarLink(Position(0.0, -13020000.0), Velocity(5800.0, 0.0));
-	Hubble hubble = Hubble(Position(0.0, -42164000.0), Velocity(3100.0, 0.0));
-	Dragon dragon = Dragon(Position(0.0, 10000000.0), Velocity(-7900.0, 0.0));
+	Sputnik* sputnik = new Sputnik();
+	GPS* gps1 = new GPS(Position(0.0, 26560000.0), Velocity(-3880.0, 0.0));
+	GPS* gps2 = new GPS(Position(23001634.72, 13280000.0), Velocity(-1940.00, 3360.18));
+	GPS* gps3 = new GPS(Position(23001634.72, -13280000.0), Velocity(1940.00, 3360.18));
+	GPS* gps4 = new GPS(Position(0.0, -26560000.0), Velocity(3880.0, 0.0));
+	GPS* gps5 = new GPS(Position(-23001634.72, -13280000.0), Velocity(1940.00, -3360.18));
+	GPS* gps6 = new GPS(Position(-23001634.72, 13280000.0), Velocity(-1940.00, -3360.18));
+	StarLink* starLink = new StarLink(Position(0.0, -13020000.0), Velocity(5800.0, 0.0));
+	Hubble* hubble = new Hubble(Position(0.0, -42164000.0), Velocity(3100.0, 0.0));
+	Dragon* dragon = new Dragon(Position(0.0, 8000000.0), Velocity(-7900.0, 0.0));
 	std::list<Satelite*> satelites;
 	std::vector<int> deadSateliteIndexes;
 

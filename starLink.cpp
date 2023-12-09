@@ -58,7 +58,13 @@ void StarLink::draw(ogstream& gout) const
 }
 
 
-bool StarLink::setToDead(bool isAlive)
+void StarLink::setToDead(std::list<Satelite*>& satelites)
 {
-	return false;
+	isAlive = false;
+
+	StarLinkPartArray* array = new StarLinkPartArray(position, velocity, angle);
+	StarLinkPartBody* body = new StarLinkPartBody(position, velocity, angle);
+
+	satelites.push_back(array);
+	satelites.push_back(body);
 }

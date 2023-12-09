@@ -1,20 +1,25 @@
 #pragma once
 #include "satelite.h"
+#include "fragment.h"
 #include "uiDraw.h"
 
-class starlinkPartArray : public Satelite
+class StarLinkPartArray : public Satelite
 {
-	starlinkPartArray();
-	starlinkPartArray(Position& pos, Velocity& vel);
+public:
+	StarLinkPartArray();
+	StarLinkPartArray(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 };
 
-class starlinkPartBody : public Satelite
+class StarLinkPartBody : public Satelite
 {
-	starlinkPartBody();
-	starlinkPartBody(Position& pos, Velocity& vel);
+public:
+	StarLinkPartBody();
+	StarLinkPartBody(Position& pos, Velocity& vel, double startAngle);
 	void draw(ogstream& gout) const override;
 	void applyPhysics(PhysicsManager& physics) override;
+	void setToDead(std::list<Satelite*>& satelites) override;
 };
 

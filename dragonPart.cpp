@@ -60,7 +60,6 @@ void DragonPartCenter::setToDead(std::list<Satelite*>& satelites)
 }
 
 
-
 DragonPartLeft::DragonPartLeft()
 {
 	angle = random(0.0, 6.2);

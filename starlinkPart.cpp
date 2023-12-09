@@ -1,6 +1,6 @@
 #include "starlinkPart.h"
 
-starlinkPartArray::starlinkPartArray()
+StarLinkPartArray::StarLinkPartArray()
 {
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
@@ -8,29 +8,30 @@ starlinkPartArray::starlinkPartArray()
 	rotationSpeed = random(0.1, 5.0);
 }
 
-starlinkPartArray::starlinkPartArray(Position& pos, Velocity& vel)
+StarLinkPartArray::StarLinkPartArray(Position& pos, Velocity& vel, double startAngle)
 {
-	angle = random(0.0, 6.2);
+	angle = startAngle;
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 4.0 * sin(angle);
+	double y = 128000.0 * 4.0 * cos(angle);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle);
+	double dy = vel.getDy() + velocityAdded * cos(angle);
 
-	radius = 254000.0;
+	radius = 128000.0 * 4.0;
 	isAlive = true;
+	rotationSpeed = -0.01;
 	rotationSpeed = random(0.1, 5.0);
 }
 
-void starlinkPartArray::draw(ogstream& gout) const
+void StarLinkPartArray::draw(ogstream& gout) const
 {
 	gout.drawStarlinkArray(position, angle);
 }
 
-void starlinkPartArray::applyPhysics(PhysicsManager& physics)
+void StarLinkPartArray::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -46,14 +47,25 @@ void starlinkPartArray::applyPhysics(PhysicsManager& physics)
 	position.setMetersY(physics.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
 
 	angle += rotationSpeed;
+}
+
+void StarLinkPartArray::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
 }
 
 
 /****************************
- starlink Body
+ StarLink Body
 *****************************/
 
-starlinkPartBody::starlinkPartBody()
+StarLinkPartBody::StarLinkPartBody()
 {
 	angle = random(0.0, 6.2);
 	radius = 254000.0;
@@ -61,29 +73,30 @@ starlinkPartBody::starlinkPartBody()
 	rotationSpeed = random(0.1, 5.0);
 }
 
-starlinkPartBody::starlinkPartBody(Position& pos, Velocity& vel)
+StarLinkPartBody::StarLinkPartBody(Position& pos, Velocity& vel, double startAngle)
 {
-	angle = random(0.0, 6.2);
+	angle = startAngle;
 
-	double x = 4.0 * sin(angle);
-	double y = 4.0 * cos(angle);
-	position = Position(pos.getPixelsX() + x, pos.getPixelsY() + y, true);
+	double x = 128000.0 * 2.0 * sin(angle + 3.14159);
+	double y = 128000.0 * 2.0 * cos(angle + 3.14159);
+	position = Position(pos.getMetersX() + x, pos.getMetersY() + y);
 
 	double velocityAdded = random(5000.0, 9000.0);
-	double dx = velocityAdded * sin(angle);
-	double dy = velocityAdded * cos(angle);
+	double dx = vel.getDx() + velocityAdded * sin(angle + 3.14159);
+	double dy = vel.getDy() + velocityAdded * cos(angle + 3.14159);
 
-	radius = 254000.0;
+	radius = 128000.0 * 4.0;
 	isAlive = true;
+	rotationSpeed = -0.01;
 	rotationSpeed = random(0.1, 5.0);
 }
 
-void starlinkPartBody::draw(ogstream& gout) const
+void StarLinkPartBody::draw(ogstream& gout) const
 {
 	gout.drawStarlinkBody(position, angle);
 }
 
-void starlinkPartBody::applyPhysics(PhysicsManager& physics)
+void StarLinkPartBody::applyPhysics(PhysicsManager& physics)
 {
 	double height = physics.calculateHeightAboveSurface(position);
 	double gravity = physics.calculateGravity(height);
@@ -99,4 +112,15 @@ void starlinkPartBody::applyPhysics(PhysicsManager& physics)
 	position.setMetersY(physics.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
 
 	angle += rotationSpeed;
+}
+
+void StarLinkPartBody::setToDead(std::list<Satelite*>& satelites)
+{
+	isAlive = false;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Fragment* frag = new Fragment(position, velocity);
+		satelites.push_back(frag);
+	}
 }

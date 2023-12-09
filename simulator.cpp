@@ -55,6 +55,13 @@ void Simulator::checkCollisions()
 					(*itOuter)->setToDead(satelites);
 					(*itInner)->setToDead(satelites);
 
+					// Delete the satelites to avoid a memory leak
+					if ((*itOuter)->getType() != "ship")
+						delete (*itOuter);
+
+					if ((*itInner)->getType() != "ship")
+						delete (*itInner);
+
 					// Erase the satelites that have collided and increase the iterator
 					// for both loops
 					satelites.erase(itOuter);
@@ -113,15 +120,6 @@ void Simulator::advanceSatelites(PhysicsManager& physics)
 		(*it)->applyPhysics(physics);
 	}
 
-	//for (int i = 0; i < satelites.size(); i++)
-	//{
-	//	satelites[i]->applyPhysics(physics);
-
-	//	// Mark dead satelites and bullets for removal
-	//	if (!satelites[i]->getIsAlive())
-	//		deadSateliteIndexes.push_back(i);
-	//}
-
 	// Remove dead satelites and bullets from the vector
 	for (auto it = satelites.begin(); it != satelites.end(); )
 	{
@@ -140,16 +138,16 @@ void Simulator::populateSim()
 {
 	populateStars();
 	satelites.push_back(&ship);
-	satelites.push_back(&sputnik);
-	satelites.push_back(&gps1);
-	satelites.push_back(&gps2);
-	satelites.push_back(&gps3);
-	satelites.push_back(&gps4);
-	satelites.push_back(&gps5);
-	satelites.push_back(&gps6);
-	satelites.push_back(&starLink);
-	satelites.push_back(&hubble);
-	satelites.push_back(&dragon);
+	satelites.push_back(sputnik);
+	satelites.push_back(gps1);
+	satelites.push_back(gps2);
+	satelites.push_back(gps3);
+	satelites.push_back(gps4);
+	satelites.push_back(gps5);
+	satelites.push_back(gps6);
+	satelites.push_back(starLink);
+	satelites.push_back(hubble);
+	satelites.push_back(dragon);
 }
 
 void Simulator::populateStars()
