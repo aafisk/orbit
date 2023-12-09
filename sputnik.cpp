@@ -38,22 +38,9 @@ Sputnik::Sputnik(Position pos)
 Physics
 **********************/
 
-void Sputnik::applyPhysics(PhysicsManager &physicsManager)
+void Sputnik::applyPhysics(PhysicsManager &physics)
 {
-	double height = physicsManager.calculateHeightAboveSurface(position);
-	double gravity = physicsManager.calculateGravity(height);
-	double direction = physicsManager.calculateGravityDirection(position);
-
-	acceleration.setDdx(physicsManager.calculateHorizontalComponent(gravity, direction));
-	acceleration.setDdy(physicsManager.calculateVerticalComponent(gravity, direction));
-
-	velocity.setDx(physicsManager.calculateVelocity(velocity.getDx(), acceleration.getDdx()));
-	velocity.setDy(physicsManager.calculateVelocity(velocity.getDy(), acceleration.getDdy()));
-
-	position.setMetersX(physicsManager.calculateDistance(position.getMetersX(), velocity.getDx(), acceleration.getDdx()));
-	position.setMetersY(physicsManager.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
-
-	angle += rotationSpeed;
+	Satelite::applyPhysics(physics);
 	rotationSpeed += 0.0001;
 }
 

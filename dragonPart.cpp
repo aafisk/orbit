@@ -46,20 +46,7 @@ physics
 
 void DragonPartCenter::applyPhysics(PhysicsManager& physics)
 {
-	double height = physics.calculateHeightAboveSurface(position);
-	double gravity = physics.calculateGravity(height);
-	double direction = physics.calculateGravityDirection(position);
-
-	acceleration.setDdx(physics.calculateHorizontalComponent(gravity, direction));
-	acceleration.setDdy(physics.calculateVerticalComponent(gravity, direction));
-
-	velocity.setDx(physics.calculateVelocity(velocity.getDx(), acceleration.getDdx()));
-	velocity.setDy(physics.calculateVelocity(velocity.getDy(), acceleration.getDdy()));
-
-	position.setMetersX(physics.calculateDistance(position.getMetersX(), velocity.getDx(), acceleration.getDdx()));
-	position.setMetersY(physics.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
-
-	angle += rotationSpeed;
+	Satelite::applyPhysics(physics);
 }
 
 /***********************************************
@@ -121,20 +108,7 @@ physics
 
 void DragonPartLeft::applyPhysics(PhysicsManager& physics)
 {
-	double height = physics.calculateHeightAboveSurface(position);
-	double gravity = physics.calculateGravity(height);
-	double direction = physics.calculateGravityDirection(position);
-
-	acceleration.setDdx(physics.calculateHorizontalComponent(gravity, direction));
-	acceleration.setDdy(physics.calculateVerticalComponent(gravity, direction));
-
-	velocity.setDx(physics.calculateVelocity(velocity.getDx(), acceleration.getDdx()));
-	velocity.setDy(physics.calculateVelocity(velocity.getDy(), acceleration.getDdy()));
-
-	position.setMetersX(physics.calculateDistance(position.getMetersX(), velocity.getDx(), acceleration.getDdx()));
-	position.setMetersY(physics.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
-
-	angle += rotationSpeed;
+	Satelite::applyPhysics(physics);
 }
 
 /***********************************************
@@ -197,20 +171,7 @@ physics
 
 void DragonPartRight::applyPhysics(PhysicsManager& physics)
 {
-	double height = physics.calculateHeightAboveSurface(position);
-	double gravity = physics.calculateGravity(height);
-	double direction = physics.calculateGravityDirection(position);
-
-	acceleration.setDdx(physics.calculateHorizontalComponent(gravity, direction));
-	acceleration.setDdy(physics.calculateVerticalComponent(gravity, direction));
-
-	velocity.setDx(physics.calculateVelocity(velocity.getDx(), acceleration.getDdx()));
-	velocity.setDy(physics.calculateVelocity(velocity.getDy(), acceleration.getDdy()));
-
-	position.setMetersX(physics.calculateDistance(position.getMetersX(), velocity.getDx(), acceleration.getDdx()));
-	position.setMetersY(physics.calculateDistance(position.getMetersY(), velocity.getDy(), acceleration.getDdy()));
-
-	angle += rotationSpeed;
+	Satelite::applyPhysics(physics);
 }
 
 /***********************************************

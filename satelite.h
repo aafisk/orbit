@@ -29,7 +29,6 @@ public:
 	string getType() { return type; }
 	double getRadius() { return radius; }
 	bool getIsAlive() const { return isAlive; }
-	//void setToDead() { isAlive = false; }
 	virtual void setToDead(std::list<Satelite*>& satelites) = 0;
 	virtual void applyPhysics(PhysicsManager& physics) = 0;
 	virtual void draw(ogstream& gout) const = 0;
